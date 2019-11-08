@@ -3,3 +3,9 @@ Dans le container kafka ou kafka2 ou kafka3 (I have no name!@fbf46b753051:/opt/b
  $ kafka-topics.sh --create --bootstrap-server kafka3:9092 --replication-factor 2 --partitions 3 --topic montopic
  $ kafka-topics.sh --describe --zookeeper zookeeper:2181 --topic montopic
  $ kafka-topics.sh --list --bootstrap-server kafka2:9092
+ 
+ // Créer producer ( peu importe le broker )
+ $ kafka-console-produc --broker-list kafka2:9092 --topic montopic
+ 
+ // Créer consumer ( peu importe le broker )
+ $ kafka-console-consumer.sh --bootstrap-server kafka3:9092 --topic montopic --from-beginning
