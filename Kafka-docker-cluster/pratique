@@ -9,3 +9,5 @@ Dans le container kafka ou kafka2 ou kafka3 (I have no name!@fbf46b753051:/opt/b
  
  // Créer consumer ( peu importe le broker )
  $ kafka-console-consumer.sh --bootstrap-server kafka3:9092 --topic montopic --from-beginning
+ 
+ // Persistance de données : /var/snap/docker/common/var-lib-docker/volumes  , utiliser "sudo find / -name "docker" | grep docker"
