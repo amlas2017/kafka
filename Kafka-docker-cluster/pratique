@@ -12,3 +12,5 @@ Dans le container kafka ou kafka2 ou kafka3 (I have no name!@fbf46b753051:/opt/b
  
  // Persistance de données (host) : /var/snap/docker/common/var-lib-docker/volumes  , utiliser "sudo find / -name "docker" | grep docker"
  // Persistance de données (container) :  ~/bitnami/kafka/data
+ 
+ // Arret du cluster:  $ docker-compose stop kafka
