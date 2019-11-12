@@ -1,0 +1,7 @@
+// https://sparkbyexamples.com/kafka/apache-kafka-consumer-producer-in-scala/
+
+ a) Start Zookeeper
+ b)   Start Kafka Broker
+ c)  Create a Kafka Topic
+ d)   Producer Program
+ e)  Consumer Program
