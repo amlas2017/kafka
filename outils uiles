@@ -1,0 +1,5 @@
+// Test de connection avec un broker Kafka :
+$ telnet localhost 9092
+
+// kafkacat, un outil en ligne de commande qui permet facilement et rapidement de lire et d’écrire dans des topics kafka.
+$ kafkacat -L -b localhost:9092
