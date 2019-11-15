@@ -1,4 +1,5 @@
-Dans le container kafka ou kafka2 ou kafka3 (I have no name!@fbf46b753051:/opt/bitnami/kafka/bin)
+// Indications: (le docker-compose est dans le meme dossier)
+Dans le container kafka1 ou kafka2 ou kafka3 (I have no name!@fbf46b753051:/opt/bitnami/kafka/bin)
 // on peut choisir n'importe node et on trouve meme résultat
  $ kafka-topics.sh --create --bootstrap-server kafka3:9092 --replication-factor 2 --partitions 3 --topic montopic
  $ kafka-topics.sh --describe --zookeeper zookeeper:2181 --topic montopic
