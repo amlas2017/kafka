@@ -5,7 +5,7 @@ Dans le container kafka1 ou kafka2 ou kafka3 (I have no name!@fbf46b753051:/opt/
  $ kafka-topics.sh --describe --zookeeper zookeeper:2181 --topic montopic
  $ kafka-topics.sh --list --bootstrap-server kafka2:9092
  
- // Créer producer ( peu importe le broker )
+ // Créer producer ( peu importe le broker: kafka1 ou kafka2 ou kafka3 )
  $ kafka-console-producer.sh --broker-list kafka2:9092 --topic montopic            ( dossier ~/opt/bitnami/kafka/bin/ )
  
  // Créer consumer ( peu importe le broker )
