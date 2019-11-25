@@ -4,6 +4,14 @@ $ telnet localhost 9092
 // kafkacat, un outil en ligne de commande qui permet facilement et rapidement de lire et d’écrire dans des topics kafka.
 $ kafkacat -L -b localhost:9092
 
+// kafkacat crée le topic dans le broker
+$ docker run --net host --rm edenhill/kafkacat:1.5.0 \ 
+        -b localhost:9092 \                 <-------- broker
+        -r http://localhost:8081\           <-------- registry
+        -s avro \                           <-------- schema
+        -t mon_nouveau_topic_a_creer \      <-------- topic à créer
+        -C -o -10 -q | jq '.'
+
 // exemple:produire et consommer messages sans JVM.
 
 // Send messages:
