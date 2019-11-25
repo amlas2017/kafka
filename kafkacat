@@ -1,0 +1,28 @@
+// Test de connection avec un broker Kafka :
+$ telnet localhost 9092
+
+// kafkacat, un outil en ligne de commande qui permet facilement et rapidement de lire et d’écrire dans des topics kafka.
+$ kafkacat -L -b localhost:9092
+
+// exemple:produire et consommer messages sans JVM.
+
+// Send messages:
+$ docker run --interactive --rm \
+        confluentinc/cp-kafkacat \
+        kafkacat -b kafka-broker:9092 \
+                -t test \
+                -K: \
+                -P <<EOF
+
+1:{"order_id":1,"order_ts":1534772501276,"total_amount":10.50,"customer_name":"Bob Smith"}
+2:{"order_id":2,"order_ts":1534772605276,"total_amount":3.32,"customer_name":"Sarah Black"}
+3:{"order_id":3,"order_ts":1534772742276,"total_amount":21.00,"customer_name":"Emma Turner"}
+EOF
+
+// Consume messages:
+$ docker run --tty --interactive --rm \
+           confluentinc/cp-kafkacat \
+           kafkacat -b kafka-broker:9092 \
+           -C \
+           -f '\nKey (%K bytes): %k\t\nValue (%S bytes): %s\n\Partition: %p\tOffset: %o\n--\n' \
+           -t test
