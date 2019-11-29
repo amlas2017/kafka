@@ -1,0 +1,57 @@
+*****************************Streaming data from PostgreSQL to Kafka using Debezium********************************
+// https://medium.com/@tilakpatidar/streaming-data-from-postgresql-to-kafka-using-debezium-a14a2644906d
+
+// Start a PostgreSQL instance
+$ docker run --name postgres -p 5000:5432 debezium/postgres
+
+// Start a Zookeeper instance
+$ docker run -it --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 debezium/zookeeper
+
+// Start a Kafka instance
+$ docker run -it --name kafka -p 9092:9092 --link zookeeper:zookeeper debezium/kafka
+
+// Start a Debezium instance
+$ docker run -it --name connect -p 8083:8083 -e GROUP_ID=1 -e CONFIG_STORAGE_TOPIC=my-connect-configs -e OFFSET_STORAGE_TOPIC=my-connect-offsets -e ADVERTISED_HOST_NAME=$(echo $DOCKER_HOST | cut -f3 -d/ | cut -f1 -d:) --link zookeeper:zookeeper --link postgres:postgres --link kafka:kafka debezium/connect
+
+// Connect to PostgreSQL and create a database to monitor
+$ docker exec -it postgres bash
+$ root@cb9222b1f718:/# psql -U postgres
+postgres=# CREATE DATABASE inventory;
+logout
+root@cb9222b1f718:/# psql -d inventory -U postgres
+postgres=# CREATE TABLE dumb_table(id SERIAL PRIMARY KEY, name VARCHAR);
+
+// Create connector using Kafka Connect
+$ curl -i -X POST -H "Accept:application/json"  \
+      -H "Content-Type:application/json" http://localhost:8083/connectors/  \
+      -d '{ 
+	 "name": "inventory-connector",
+	 "config": {
+		 "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+		 "tasks.max": "1", 
+		 "database.hostname": "postgres",
+		 "database.port": "5432", 
+		 "database.user": "postgres", 
+		 "database.password": "postgres",
+		 "database.dbname": "inventory", 
+		 "database.server.name": "dbserver1",
+		 "database.whitelist": "inventory", 
+		 "database.history.kafka.bootstrap.servers": "kafka:9092",
+		 "database.history.kafka.topic": "schema-changes.inventory"
+	 } 
+       }'
+
+// Vérifie si le connector est crée
+$ curl -X GET -H "Accept:application/json" localhost:8083/connectors/inventory-connector | jq
+
+// Start a Kafka Console consumer to watch changes
+docker run -it --name watcher --rm --link zookeeper:zookeeper --link postgres:postgres --link kafka:kafka debezium/kafka watch-topic -a -k dbserver1.public.dumb_table
+// for more details ----->  https://hub.docker.com/r/debezium/kafka/
+
+
+//
+INSERT INTO dumb_table VALUES ( 1234, 'SALAM');
+ALTER TABLE dumb_table ADD COLUMN prenom VARCHAR;
+INSERT INTO dumb_table VALUES ( 12721, '******SALAM----', 'aalikoum--------');
+
+Si on vous modifie la structure de la table, puis effectuez des insertions, des mises à jour ou des suppressions, le schéma imprimé dans Consumer-console changera et évoluera pour prendre en charge les données.
