@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+n_machines = 3
+box        = "centos/7"
+
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  n_machines.times do |index|
+    config.vm.define :"node#{index + 1}" do |node_config|
+      node_config.vm.box = box
+      node_config.vm.network(:private_network,
+                             :ip => "172.20.20.#{10 + index}")
+      node_config.vm.host_name = "node#{index + 1}"
+      node_config.vm.provider("virtualbox") do |virtual_box|
+        virtual_box.memory = 2048
+      end
+    end
+  end
+end
