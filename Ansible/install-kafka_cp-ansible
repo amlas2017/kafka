@@ -40,10 +40,10 @@ c) ls  host_vars   ---->  node1  node2  node1
 
 // Test: kafkacat -L -b 172.20.20.20:9092   ----> on peut ajouter les noms des brokers( node1,node2 et node3) à /etc/hosts
 // Dans node1: 
-$ ps -aux | grep kafka
-$ systemctl status kafka.service
-$ ss -tulpn | grep 9092
-
+          $ ps -aux | grep kafka
+          $ systemctl status kafka.service
+          $ ss -tulpn | grep 9092
+// kafka-rest ---->  http://172.20.20.30:8081/
 
 
 
