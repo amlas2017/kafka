@@ -1,3 +1,57 @@
 Etapes à suivre:
 $ sudo apt install openjdk-8-jdk
-$ 
+$ sudo useradd -m zk
+$ sudo usermod --shell /bin/bash zk
+$ sudo passwd zk
+$ sudo usermod -aG sudo zk
+$ sudo vi /etc/ssh/sshd_config                            
+   PermitRootLogin no 
+   DenyUsers zk
+$ sudo systemctl restart sshd
+$ su -l zk
+$ sudo mkdir -p /data/zookeeper
+$ sudo chown zk:zk /data/zookeeper
+$ sudo wget http://apache.osuosl.org/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz
+$ sudo tar -xvf zookeeper-3.4.14.tar.gz
+$ sudo chown zk:zk -R  zookeeper-3.4.14
+$ sudo ln -s zookeeper-3.4.14 zookeeper
+$ sudo chown -h zk:zk zookeeper
+$ cd zookeeper/conf/ && cp zoo_sample.cfg zoo.cfg
+$ vi zoo.cfg    ---->  dataDir=/data/zookeeper
+/opt/zookeeper$ bin/zkServer.sh start
+$ ps -aux | grep zookeeper
+$ ss -tulpn | grep 2181
+$ bin/zkCli.sh -server 127.0.0.1:2181   ----->  help
+$ bin/zkServer.sh stop
+$ sudo vi /etc/systemd/system/zk.service
+   
+[Unit]
+Description=Zookeeper Daemon
+Documentation=http://zookeeper.apache.org
+Requires=network.target
+After=network.target
+
+[Service]    
+Type=forking
+WorkingDirectory=/opt/zookeeper
+User=zk
+Group=zk
+ExecStart=/opt/zookeeper/bin/zkServer.sh start /opt/zookeeper/conf/zoo.cfg
+ExecStop=/opt/zookeeper/bin/zkServer.sh stop /opt/zookeeper/conf/zoo.cfg
+ExecReload=/opt/zookeeper/bin/zkServer.sh restart /opt/zookeeper/conf/zoo.cfg
+TimeoutSec=30
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
+$ sudo systemctl start zk
+$ sudo systemctl enable zk
+$ sudo systemctl status zk
+$ .......
+
+
+
+
+
+
