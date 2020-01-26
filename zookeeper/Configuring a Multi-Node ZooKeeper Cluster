@@ -1,3 +1,17 @@
-Installer zoookeeper sur chaque node
+Installer zoookeeper sur chaque node (cf. install-one-node dans ce répo)
 
-$ sudo vi /opt/zookeeper/conf/zoo.cfg
+
+POUR CHAQUE NODE:
+$ sudo cat /etc/hosts << EOF
+  192.168.100.10     server1
+  192.168.100.11     server2
+  192.168.100.12     server3
+  EOF
+$ sudo cat /opt/zookeeper/conf/zoo.cfg << EOF
+  server.1=server1:2888:3888
+  server.2=server2:2888:3888
+  server.3=server3:2888:3888
+  EOF
+$  ...... 
+
+
