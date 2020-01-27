@@ -6,9 +6,17 @@ Il fonctionne en fournissant un espace mémoire partagé par toutes les instance
 Cet espace mémoire est hiérarchique, à la manière d’un FileSystem composé de répertoires et de fichiers à la différence que, 
 dans le cas de Zookeeper, on ne parle pas de répertoires et de fichiers mais de nœuds. Chaque nœud s’appelle un ZNode.
 Lorsque l’on démarre une instance Zookeeper, la hiérarchie de nœuds est vide et nous n’avons alors qu’un nœud racine qui,
-à l’instar des systèmes fichiers, se nomme « / » :
+à l’instar des systèmes fichiers, se nomme « / ».
 
-//  ----> https://www.codeflow.site/fr/article/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04
+// Bref:
+- une instance Zookeeper offre un espace mémoire hiérarchique ;
+- plusieurs instances Zookeeper répliquées se nomment un ensemble ;
+- un leader est élu dans l’ensemble Zookeeper, c’est lui qui enregistre les opérations, les transmet aux autres membres puis 
+  considère l’opération valide lorsque le quorum est atteint ;
+- au sein d’un ensemble Zookeeper, le quorum représente le nombre minimum d’instances nécessaires pour commiter une donnée dans 
+  l’ensemble.
+
+// Installation ----> https://www.codeflow.site/fr/article/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04
 
 // Parce que ZooKeeper conserve les données en mémoire pour atteindre un débit élevé et une latence faible, les systèmes de production
 fonctionnent mieux avec 8 Go de RAM. Une quantité moindre de RAM peut entraîner un échange de machine virtuelle, ce qui peut 
