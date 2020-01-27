@@ -1,6 +1,5 @@
 Installer zoookeeper sur chaque node (cf. install-one-node dans ce répo)
 
-
 POUR CHAQUE NODE:
 $ sudo cat /etc/hosts << EOF
   192.168.100.10     server1
@@ -15,8 +14,7 @@ $ sudo cat /opt/zookeeper/conf/zoo.cfg << EOF
 
 // Script pour installer zookeeper sur un cluster   ---->  https://cleanprogrammer.net/how-to-setup-zookeeper-cluster/
 
-#!/bin/sh
-  
+#!/bin/sh  
 MY_ID=$1
 sudo mkdir -p $ZK_HOME/var/zk/data
 sudo chown -R zk:zk $ZK_HOME/var
