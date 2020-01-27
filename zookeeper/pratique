@@ -1,3 +1,5 @@
+// Fonctionnalités de Zookeeper: Naming Service, la gestion de configuration, de la synchronisation, Leader Election...
+
 //  ----> https://www.codeflow.site/fr/article/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04
 
 // Parce que ZooKeeper conserve les données en mémoire pour atteindre un débit élevé et une latence faible, les systèmes de production
