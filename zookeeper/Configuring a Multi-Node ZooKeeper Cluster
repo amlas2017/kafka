@@ -46,14 +46,3 @@ EOF
 cat >$ZK_HOME/var/zk/data/myid << EOF
 ${MY_ID}
 EOF
-
-
-
-
-
-
-
-
-
-
-
