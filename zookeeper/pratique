@@ -1,4 +1,12 @@
+// Notes cours -------> https://blog.engineering.publicissapient.fr/2015/02/24/introduction-et-demystification-de-zookeeper/
 // Fonctionnalités de Zookeeper: Naming Service, la gestion de configuration, de la synchronisation, Leader Election...
+
+// Fonctionnement de Zookeeper:
+Il fonctionne en fournissant un espace mémoire partagé par toutes les instances d’un même ensemble de serveurs Zookeeper. 
+Cet espace mémoire est hiérarchique, à la manière d’un FileSystem composé de répertoires et de fichiers à la différence que, 
+dans le cas de Zookeeper, on ne parle pas de répertoires et de fichiers mais de nœuds. Chaque nœud s’appelle un ZNode.
+Lorsque l’on démarre une instance Zookeeper, la hiérarchie de nœuds est vide et nous n’avons alors qu’un nœud racine qui,
+à l’instar des systèmes fichiers, se nomme « / » :
 
 //  ----> https://www.codeflow.site/fr/article/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04
 
