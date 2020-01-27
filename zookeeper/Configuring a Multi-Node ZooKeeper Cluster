@@ -12,6 +12,50 @@ $ sudo cat /opt/zookeeper/conf/zoo.cfg << EOF
   server.2=server2:2888:3888
   server.3=server3:2888:3888
   EOF
-$  ...... 
+
+// Script pour installer zookeeper sur un cluster   ---->  https://cleanprogrammer.net/how-to-setup-zookeeper-cluster/
+
+#!/bin/sh
+  
+MY_ID=$1
+sudo mkdir -p $ZK_HOME/var/zk/data
+sudo chown -R zk:zk $ZK_HOME/var
+echo "/var/zk/data crée avec succès..........."
+
+sudo mkdir -p $ZK_HOME/var/zk/log
+sudo chown -R zk:zk $ZK_HOME/var
+echo "/var/zk/log crée avec succès..........."
+tree $ZK_HOME/var
+
+mkdir -p $ZK_HOME/conf
+
+cat >$ZK_HOME/conf/zoo.cfg << EOF
+dataDir=$ZK_HOME/var/zk/data
+clientPort=2181
+maxClientCnxns=0
+
+server.1=server1:2888:3888
+server.2=server2:2888:3888
+server.3=server3:2888:3888
+
+initLimit=5
+syncLimit=2
+
+autopurge.snapRetainCount=3
+autopurge.purgeInterval=1
+EOF
+
+cat >$ZK_HOME/var/zk/data/myid << EOF
+${MY_ID}
+EOF
+
+
+
+
+
+
+
+
+
 
 
