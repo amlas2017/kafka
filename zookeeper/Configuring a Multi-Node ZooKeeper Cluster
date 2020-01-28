@@ -33,7 +33,7 @@ clientPort=2181
 maxClientCnxns=0
 
 server.1=server1:2888:3888     // on peut remplacer le hostname de la machine en cours par 0.0.0.0
-server.2=server2:2888:3888
+server.2=server2:2888:3888     // -----> https://codeforgeek.com/how-to-setup-zookeeper-cluster-for-kafka/
 server.3=server3:2888:3888
 
 initLimit=5
