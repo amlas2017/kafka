@@ -32,7 +32,7 @@ dataDir=$ZK_HOME/var/zk/data
 clientPort=2181
 maxClientCnxns=0
 
-server.1=server1:2888:3888
+server.1=server1:2888:3888     // on peut remplacer le hostname de la machine en cours par 0.0.0.0
 server.2=server2:2888:3888
 server.3=server3:2888:3888
 
@@ -46,3 +46,8 @@ EOF
 cat >$ZK_HOME/var/zk/data/myid << EOF
 ${MY_ID}
 EOF
+
+-----------------------------------------------------------------------------------------------------------------------------
+// Identifier follower(s) et leader
+$ echo stat | nc server1 2181 | grep Mode && echo stat | nc server2 2181 | grep Mode && echo stat | nc server3 2181 | grep Mode
+
