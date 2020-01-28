@@ -1,0 +1,2 @@
+// Docker Official Images   ----->  https://hub.docker.com/_/zookeeper
+  $ docker pull zookeeper
