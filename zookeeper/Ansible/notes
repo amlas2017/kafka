@@ -1,0 +1,93 @@
+// Playbook pour débur d'installation de zookeeper (manque mettre en place les services systemd)
+// Inclus des tags pour tester des taches spécifiques
+
+---
+- name: Install Zookeeper
+  hosts: all
+  vars:
+    version: 3.5.5
+    user: zookeeper
+    group: zookeeper
+    install_dir: /opt/zookeeper
+    data_dir: /opt/zookeeper/data
+    log_dir: /opt/zookeeper/log
+
+  tasks:
+    - name: Install Required Packages
+      become: yes
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+         - wget
+         - vim
+         - openjdk-8-jdk
+         - git
+      tags: install-packages
+
+    - name: Create Group
+      become: yes
+      group:
+        name: "{{group}}"
+        state: present
+
+    - name: Create User
+      become: yes
+      user:
+        name: "{{user}}"
+        group: "{{group}}"
+        state: present
+
+    - name: Download Zookeeper
+      get_url:
+        url: http://mirror.csclub.uwaterloo.ca/apache/zookeeper/zookeeper-{{version}}/apache-zookeeper-{{version}}-bin.tar.gz
+        dest: /tmp/zookeeper-{{version}}.tar.gz
+
+    - name: Extract Zookeeper
+      become: yes
+      unarchive:
+        src: /tmp/zookeeper-{{version}}.tar.gz
+        dest: /opt/
+        copy: no
+      tags: Extract-Zookeeper
+
+    - name: Remove Existing Install
+      become: yes
+      file:
+        path: "{{ install_dir }}"
+        state: absent
+      tags: Remove-Existing-Install
+
+
+    - name: Move Zookeeper Install Directory
+      become: yes
+      command: mv -f /opt/apache-zookeeper-{{version}}-bin "{{ install_dir }}"
+      tags: MoveZk
+
+    - name: Create Data Directory
+      become: yes
+      file:
+        path: "{{data_dir}}"
+        owner: "{{user}}"
+        group: "{{group}}"
+        mode: 0755
+        state: directory
+
+    - name: Create Log Directory
+      become: yes
+      file:
+        path: "{{log_dir}}"
+        owner: "{{user}}"
+        group: "{{group}}"
+        mode: 0755
+        state: directory
+
+    - name: Update Permissions
+      become: yes
+      file:
+        path: "{{ install_dir }}"
+        owner: "{{ user }}"
+        group: "{{ group }}"
+        recurse: yes
+        mode: 0755
+        state: directory
