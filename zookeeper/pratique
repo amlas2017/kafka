@@ -31,3 +31,23 @@ dépassement de délai de session client qui pourrait avoir un impact négatif s
               transactions pour les mises à jour. On peut choisir un répertoire distinct pour les journaux de transactions.
   - clientPort : port utilisé pour écouter les connexions client.
   - maxClientCnxns : Limite le nombre maximal de connexions client.    
+
+// Tester si zookeeper gère les brokers kafka:
+$ /bin/zookeeper-shell.sh node4:2181 ls /brokers/ids
+ 
+ Cette commande est équivalente à: 
+ 
+$ /bin/zookeeper-shell.sh node4:2181
+ls /        // la racine de "système de fichiers de zookeeper"
+[admin, brokers, cluster, config, consumers, controller, controller_epoch, isr_change_notification, latest_producer_id_block, log_dir_event_notification, zookeeper]
+ls /brokers
+[ids, seqid, topics]
+ls /brokers/ids
+[0, 1, 2]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
