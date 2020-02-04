@@ -46,7 +46,10 @@ ls /brokers/ids
 [0, 1, 2]
  
 // Liste des topics (avec zookeeper shell):
-$ /bin/zookeeper-shell.sh node4:2181 ls /brokers/topics
+$ /bin/zookeeper-shell.sh node-zk:2181 ls /brokers/topics
+
+// Liste des topics (avec kafka shell):
+$ /bin/kafka-topics.sh --list --zookeeper node-zk:2181
  
  
  
