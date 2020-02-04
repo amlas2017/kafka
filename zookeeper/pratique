@@ -45,7 +45,8 @@ ls /brokers
 ls /brokers/ids
 [0, 1, 2]
  
- 
+// Liste des topics (avec zookeeper shell):
+$ /bin/zookeeper-shell.sh node4:2181 ls /brokers/topics
  
  
  
