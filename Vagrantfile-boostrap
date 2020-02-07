@@ -1,0 +1,86 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+ 
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+VAGRANT_VM_PROVIDER = "virtualbox"
+ 
+Vagrant.configure(VAGRANTFILE_API_VERSION) do | config |
+    VM_COUNT = 6
+ 
+    config.vm.provider :virtualbox do | vb |
+        vb.customize ["modifyvm", :id, "--memory", "2048"]
+        vb.customize ["modifyvm", :id, "--natnet1", "10.3/16"]
+        vb.gui = false
+    end
+ 
+    (1..VM_COUNT).each do | machine_id |
+        config.vm.define "base-centos-#{machine_id}" do | server |
+            server.vm.hostname = "base-centos-#{machine_id}"
+            server.vm.box = "centos/7"
+            server.vm.network :private_network, ip: "192.168.56.10#{machine_id}"
+            server.vm.provider :virtualbox do | vb |
+                vb.name = "base-centos-#{machine_id}"
+            end
+end
+ end
+end
+#############################################################################################################################
+
+#!/bin/bash
+# Update hosts file
+echo "Update /etc/hosts file"
+cat >>/etc/hosts<<EOF
+192.168.56.101 base-centos-1
+192.168.56.102 base-centos-2
+192.168.56.103 base-centos-3
+192.168.56.104 base-centos-4
+192.168.56.105 base-centos-5
+192.168.56.106 base-centos-6
+EOF
+# Install java, wget, vim, tree et ntp
+echo "........................Install wget, vim, tree et ntp..........................."
+yum install -y java-1.8.0-openjdk
+yum install -y wget vim tree psmisc nc
+yum update -y
+# Enable ntp service
+echo "Enable and start ntp service"
+systemctl enable ntp.service  >/dev/null 2>&1
+systemctl start ntp.service
+
+# Disable SELinux
+echo " Disable SELinux"
+setenforce 0
+sed -i --follow-symlinks 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux
+# Stop and disable firewalld
+echo "Stop and Disable firewalld"
+systemctl disable firewalld >/dev/null 2>&1
+systemctl stop firewalld
+# Disable swap
+echo "Disable and turn off SWAP"
+sed -i '/swap/d' /etc/fstab
+swapoff -a
+# Enable ssh password authentication
+echo " Enable ssh password authentication"
+sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+systemctl reload sshd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
