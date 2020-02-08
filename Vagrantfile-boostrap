@@ -41,7 +41,7 @@ EOF
 # Install java, wget, vim, tree et ntp
 echo "........................Install wget, vim, tree et ntp..........................."
 yum install -y java-1.8.0-openjdk
-yum install -y wget vim tree psmisc nc
+yum install -y wget vim tree psmisc nc bash-completion
 yum update -y
 # Enable ntp service
 echo "Enable and start ntp service"
