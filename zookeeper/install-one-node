@@ -45,6 +45,7 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 
+$ systemctl daemon-reload
 $ sudo systemctl start zk
 $ sudo systemctl enable zk
 $ sudo systemctl status zk
