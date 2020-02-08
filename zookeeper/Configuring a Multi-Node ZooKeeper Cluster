@@ -1,3 +1,6 @@
+// Installer zookeeper dans un cluster ----->  https://codeforgeek.com/how-to-setup-zookeeper-cluster-for-kafka/
+
+
 Installer zoookeeper sur chaque node (cf. install-one-node dans ce répo)
 
 POUR CHAQUE NODE:
