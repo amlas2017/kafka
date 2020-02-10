@@ -53,4 +53,4 @@ EOF
 -----------------------------------------------------------------------------------------------------------------------------
 // Identifier follower(s) et leader
 $ echo stat | nc server1 2181 | grep Mode && echo stat | nc server2 2181 | grep Mode && echo stat | nc server3 2181 | grep Mode
-
+   ---> ajouter la ligne  4lw.commands.whitelist=*  dans zoo.cfg (dans tous les nodes) si la commande ci-dessus ne marche pas.
