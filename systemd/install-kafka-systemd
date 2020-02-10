@@ -1,4 +1,4 @@
 https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-centos-7
 // Fonctionnel pour une machine(zookeeper et broker sont sur une meme machine)
   ---> le service kafka requiert le service zookeeper
-!!!! C'est différent pour un zookeeper sur une autre machine 
+ 
