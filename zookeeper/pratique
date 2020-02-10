@@ -51,7 +51,8 @@ $ /bin/zookeeper-shell.sh node-zk:2181 ls /brokers/topics
 // Liste des topics (avec kafka shell):
 $ /bin/kafka-topics.sh --list --zookeeper node-zk:2181
  
- 
+// La commande: echo stat | nc  node-zk 2181
+ ---> ajouter la ligne  4lw.commands.whitelist=*  dans zoo.cfg (dans tous les nodes)
  
  
  
