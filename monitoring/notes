@@ -10,5 +10,31 @@ Le monitoring JMX se fait en temps réel par l'interrogation des données des "M
 JVM (la console JMX). Un MBean est une ressource qui s'exécute à l'intérieur d'une JVM et fournit des données sur la configuration 
 et l'utilisation de cette ressource.
 
-// Exposer JMX pour kafka:
-Renseigner JMX_PORT dans kafka-run-class.sh
+// Exposer JMX pour kafka  ----->  Renseigner JMX_PORT dans kafka-run-class.sh
+
+Open Kafka JMX port at 3999
+   ---> update bin/kafka-run-class.sh:
+   
+# JMX settings
+if [ -z "$KAFKA_JMX_OPTS" ]; then
+  KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote=true  \
+                  -Dcom.sun.management.jmxremote.authenticate=false  \ 
+                  -Dcom.sun.management.jmxremote.ssl=false    \
+                  -Djava.rmi.server.hostname=0.0.0.0     \
+                  -Djava.net.preferIPv4Stack=true"
+fi
+
+# JMX port to use
+if [  $JMX_PORT ]; then
+  KAFKA_JMX_OPTS="$KAFKA_JMX_OPTS -Dcom.sun.management.jmxremote.port=${JMX_PORT} 
+                                  -Dcom.sun.management.jmxremote.rmi.port=${JMX_PORT} "
+fi
+
+  ---> update bin/kafka-server-start.sh:
+  
+if [ -z "$JMX_PORT" ]; then
+  export JMX_PORT=3999
+fi
+  
+  
+  
