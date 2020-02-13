@@ -1,1 +1,11 @@
 // JMX
+Toutes les métriques exposées par Kafka sont accessibles via l'interface Java Management Extensions (JMX). 
+La façon la plus simple de les utiliser dans un système de surveillance externe est d'utiliser un agent de collecte fourni par 
+votre système de surveillance et de le joindre au processus Kafka.
+Il peut s'agir d'un processus distinct qui s'exécute sur le système et se connecte à l'interface JMX. On peut également utiliser 
+un agent JMX qui s'exécute directement dans le processus Kafka pour accéder aux métriques via une connexion HTTP, comme Jolokia.
+
+La console JMX fournit une interface standard pour surveiller la santé, les performances et les ressources d'une JVM. 
+Le monitoring JMX se fait en temps réel par l'interrogation des données des "Managed Beans" (MBeans) qui sont exposées via un port
+JVM (la console JMX). Un MBean est une ressource qui s'exécute à l'intérieur d'une JVM et fournit des données sur la configuration 
+et l'utilisation de cette ressource.
