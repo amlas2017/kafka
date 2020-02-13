@@ -9,3 +9,6 @@ La console JMX fournit une interface standard pour surveiller la santé, les per
 Le monitoring JMX se fait en temps réel par l'interrogation des données des "Managed Beans" (MBeans) qui sont exposées via un port
 JVM (la console JMX). Un MBean est une ressource qui s'exécute à l'intérieur d'une JVM et fournit des données sur la configuration 
 et l'utilisation de cette ressource.
+
+// Activer JMX pour kafka:
+Renseigner JMX_PORT dans kafka-run-class.sh
