@@ -1,3 +1,6 @@
 https://data-flair.training/blogs/kafka-tutorials-home/
 
 // Liste de brokers: --->     echo dump | nc localhost 2181 | grep brokers
+
+
+// Supprimer un topic   ---->  https://sparkbyexamples.com/kafka/kafka-delete-topic/
