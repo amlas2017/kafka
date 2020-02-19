@@ -1,0 +1,10 @@
+//  ---->  https://blog.univalence.io/kafka-et-les-groupes-de-consommateurs/
+
+Les groupes ont 4 états de fonctionnement possibles :
+
+Empty : le groupe n'a plus de membre associé. Il est éligible à la suppression si aucun commit n'a été fait dans ce groupe. 
+        Il s'agit aussi de l'état initial d'un groupe lors de sa création, qui passe alors rapidement à l'état PreparingRebalance, puisque le membre responsable de la création du groupe va par suite demander de rejoindre le groupe.
+Stable : le groupe comporte un ou plusieurs membres et il n'y a pas de changement dans sa configuration.
+PreparingRebalance: un ou plusieurs membres rejoingnent le groupe ou sont retirés du groupe.
+                    Le groupe se prépare à un rééquilibrage des charges.
+CompletingRebalance : Le groupe est en attente de l'attribution d'un état de la part du leader du groupe.
