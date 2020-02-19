@@ -8,3 +8,7 @@ Stable : le groupe comporte un ou plusieurs membres et il n'y a pas de changemen
 PreparingRebalance: un ou plusieurs membres rejoingnent le groupe ou sont retirés du groupe.
                     Le groupe se prépare à un rééquilibrage des charges.
 CompletingRebalance : Le groupe est en attente de l'attribution d'un état de la part du leader du groupe.
+
+En cas de problème rencontré avec un groupe, celui-ci passe alors à l'état Dead. 
+Cet état est aussi atteint si un groupe est vide et si ses anciens membres n'ont pas fait de commit. 
+Cet état apparaît enfin dans le cas où une partition associée au groupe disparait.
