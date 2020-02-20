@@ -2,7 +2,9 @@
 for i in 2 3 4; do
    echo "10.30.3.$i is a "$(echo status | nc 10.30.3.$i 2181 | grep ^Mode | awk '{print $2}')
 done
-
+                    ou:
+ for i in 1 2 3; do    echo "zookeeper$i is a "$(echo status | nc zookeeper$i 2181 | grep ^Mode | awk '{print $2}'); done
+ 
 // Notes cours -------> https://blog.engineering.publicissapient.fr/2015/02/24/introduction-et-demystification-de-zookeeper/
 // Fonctionnalités de Zookeeper: Naming Service, la gestion de configuration, de la synchronisation, Leader Election...
 
