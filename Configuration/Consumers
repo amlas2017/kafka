@@ -3,6 +3,8 @@
    
 $ ./bin/kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group mon_groupe
 
+// La notion de lag correspond à la différence (en messages) entre le dernier offset de message traité par le groupe pour une 
+   partition donnée et l'offset du message le plus récent.
 
 Les groupes ont 4 états de fonctionnement possibles :
 
