@@ -1,4 +1,8 @@
 //  ---->  https://blog.univalence.io/kafka-et-les-groupes-de-consommateurs/
+// Infos sur les groupes consumers:
+   
+$ ./bin/kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group mon_groupe
+
 
 Les groupes ont 4 états de fonctionnement possibles :
 
