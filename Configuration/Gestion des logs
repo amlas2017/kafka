@@ -1,0 +1,13 @@
+// 2 methodes pour supprimer les vieux logs(messages):
+i) suppresstion classique de logs selon age (log.roll.ms= ,log.retention.ms= ) ou espace/bytes (log.segment.bytes= )
+--> Pour gérer la taille croissante des journaux, Kafka les roule en segments. Le calendrier de roulement des journaux est basé 
+    sur les horodatages intégrés dans les messages.
+    log.roll.ms=
+    log.retention.ms=
+    log.segment.bytes= 
+ii) Compactage des journaux  
+---->  Si vous utilisez la stratégie de suppression, un segment peut être supprimé entre la dernière mise à jour et le blocage 
+       ou le redémarrage de l'application. Vous n'auriez pas tous les enregistrements au démarrage. Il serait préférable de 
+       conserver la dernière valeur connue pour une clé donnée, en traitant l'enregistrement suivant avec la même clé que vous 
+       le feriez pour une mise à jour d'une table de base de données.
+ log.cleanup.policy=compact 
