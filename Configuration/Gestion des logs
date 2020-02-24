@@ -11,3 +11,6 @@ ii) Compactage des journaux
        conserver la dernière valeur connue pour une clé donnée, en traitant l'enregistrement suivant avec la même clé que vous 
        le feriez pour une mise à jour d'une table de base de données.
  log.cleanup.policy=compact 
+ 
+ ---> Bref,si on a des événements ou des messages indépendants et autonomes, on utilise la suppression des logs., et si on a des
+      mis à jour des événements ou des messages, on aurait besoin d'utiliser le compactage des logs.
