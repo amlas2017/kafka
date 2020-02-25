@@ -1,2 +1,12 @@
 // Même si nous configurons les brokers dans la configuration la plus fiable possible, le système dans son ensemble peut toujours 
 perdre accidentellement des données si nous ne configurons pas les producteurs pour qu'ils soient également fiables.
+
+// Accusé de réception de messages: acks 
+- acks=0 signifie qu'un message est considéré comme écrit avec succès dans Kafka si le producer a réussi à l'envoyer sur le réseau.
+On obtiendrait toujours des erreurs si l'objet que vous envoyez ne peut pas être sérialisé ou si la carte réseau a échoué, mais on 
+n'aurait aucune erreur si la partition est hors ligne ou si l'ensemble du cluster Kafka est hors ligne. Cela signifie que même dans 
+le cas prévu d'une élection du Leader, le producteur perdra des messages car il ne saura pas que le Leader n'est pas disponible 
+pendant qu'un nouveau Leader est élu.
+---> L'exécution avec acks = 0 est très rapide (c'est pourquoi vous voyez beaucoup de repères avec cette configuration). 
+     On peut obtenir un débit incroyable et utiliser la majeure partie de la bande passante, mais on est assuré de perdre certains 
+     messages si on choisit cette route.
