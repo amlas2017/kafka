@@ -61,5 +61,10 @@ $ /bin/kafka-topics.sh --list --zookeeper node-zk:2181
 // La commande: echo stat | nc  node-zk 2181
  ---> ajouter la ligne  4lw.commands.whitelist=*  dans zoo.cfg (dans tous les nodes)
  
+ //chroot
+Il est généralement considéré comme une bonne pratique d'utiliser un chemin chroot pour le cluster Kafka. Cela permet à l'ensemble
+Zookeeper d'être partagé avec d'autres applications, y compris d'autres clusters Kafka,sans conflit. 
+Il est également préférable de spécifier plusieurs Zookeeper serveurs (qui font tous partie du même ensemble) dans cette 
+configuration. Cela permet au courtier Kafka de se connecter à un autre membre de l'ensemble Zookeeper en cas de panne du serveur.
  
  
