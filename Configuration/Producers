@@ -3,6 +3,12 @@ perdre accidentellement des données si nous ne configurons pas les producteurs 
 
 // Accusé de réception de messages: acks 
 
+Properties config = new Properties();
+config.put("client.id", InetAddress.getLocalHost().getHostName());
+config.put("bootstrap.servers", "host1:9092,host2:9092");
+config.put("acks", "all");        <--------------------------------------------
+new KafkaProducer<K, V>(config);
+
 - acks=0 signifie qu'un message est considéré comme écrit avec succès dans Kafka si le producer a réussi à l'envoyer sur le réseau.
 On obtiendrait toujours des erreurs si l'objet que vous envoyez ne peut pas être sérialisé ou si la carte réseau a échoué, mais on 
 n'aurait aucune erreur si la partition est hors ligne ou si l'ensemble du cluster Kafka est hors ligne. Cela signifie que même dans 
