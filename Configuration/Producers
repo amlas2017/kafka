@@ -1,0 +1,2 @@
+// Même si nous configurons les brokers dans la configuration la plus fiable possible, le système dans son ensemble peut toujours 
+perdre accidentellement des données si nous ne configurons pas les producteurs pour qu'ils soient également fiables.
