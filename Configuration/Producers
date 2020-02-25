@@ -2,6 +2,7 @@
 perdre accidentellement des données si nous ne configurons pas les producteurs pour qu'ils soient également fiables.
 
 // Accusé de réception de messages: acks 
+
 - acks=0 signifie qu'un message est considéré comme écrit avec succès dans Kafka si le producer a réussi à l'envoyer sur le réseau.
 On obtiendrait toujours des erreurs si l'objet que vous envoyez ne peut pas être sérialisé ou si la carte réseau a échoué, mais on 
 n'aurait aucune erreur si la partition est hors ligne ou si l'ensemble du cluster Kafka est hors ligne. Cela signifie que même dans 
@@ -10,3 +11,20 @@ pendant qu'un nouveau Leader est élu.
 ---> L'exécution avec acks = 0 est très rapide (c'est pourquoi vous voyez beaucoup de repères avec cette configuration). 
      On peut obtenir un débit incroyable et utiliser la majeure partie de la bande passante, mais on est assuré de perdre certains 
      messages si on choisit cette route.
+     
+- acks=1 signifie que le leader enverra un accusé de réception ou une erreur au moment où il recevra le message et l'écrira dans le fichier de données de partition (mais pas nécessairement synchronisé sur le disque). Cela signifie que dans des circonstances normales d'élection de leader, votre producteur recevra LeaderNotAvailableException pendant qu'un leader est élu, et si le producteur gère correctement cette erreur (voir la section suivante), il réessayera d'envoyer le message et le message arrivera en toute sécurité au Nouveau
+Leader. On peut perdre des données si le Leader se bloque et que certains messages qui ont été écrits avec succès au Leader et 
+reconnus n'ont pas été répliqués vers les Followers avant le plantage.  
+
+- acks=all signifie que le Leader attendra que toutes les répliques synchronisées reçoivent le message avant de renvoyer un 
+accusé de réception ou une erreur. En conjonction avec la configuration min.insync.replica sur le Broker, cela nous permet de 
+contrôler le nombre de répliques qui reçoivent le message avant qu'il ne soit reconnu. Il s'agit de l'option la plus sûre: le 
+producteur n'arrêtera pas d'envoyer le message avant qu'il ne soit pleinement engagé. Il s'agit également de l'option la plus 
+lente: le producer attend que toutes les répliques reçoivent tous les messages avant de pouvoir marquer le lot de messages 
+comme «terminé» et continuer. Les effets peuvent être atténués en utilisant le mode asynchrone pour le producer et en envoyant 
+des lots plus importants, mais cette option vous permettra généralement de réduire le débit.
+
+
+
+
+
