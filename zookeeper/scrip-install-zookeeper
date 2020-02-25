@@ -1,0 +1,13 @@
+#!/bin/bash
+// must being sudo
+wget http://miroir.univ-lorraine.fr/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz && \
+tar -xvf zookeeper-3.4.14.tar.gz 
+mv zookeeper-3.4.14 /usr/local/zookeeper
+mkdir -p /var/lib/zookeeper
+cat > /usr/local/zookeeper/conf/zoo.cfg << EOF
+ tickTime=2000
+ dataDir=/var/lib/zookeeper
+ clientPort=2181
+EOF
+export JAVA_HOME=/usr/java/jdk1.8.0_51
+/usr/local/zookeeper/bin/zkServer.sh start
