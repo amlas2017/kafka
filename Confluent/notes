@@ -1,4 +1,1 @@
-// Installation
-etre en root ----->  curl -L https://cnfl.io/cli | sh -s -- -b /usr/local/bin/  ---->  /usr/local/bin/ est le dossier choisi
-export PATH=/usr/local/bin/
-$ confluent --help
+//
