@@ -2,5 +2,52 @@ https://data-flair.training/blogs/kafka-tutorials-home/
 
 // Liste de brokers: --->     echo dump | nc localhost 2181 | grep brokers
 
-
 // Supprimer un topic   ---->  https://sparkbyexamples.com/kafka/kafka-delete-topic/
+
+// Numéro du dernier offset:
+
+i/ ------> commandes kafka:
+bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test -time -1 --partitions 0
+
+test:0:18
+
+ii/------> commandes zookeeper******************
+
+/usr/lib/zookeeper/bin/zkCli.sh -server localhost:2181 get /consumers/spark-streaming-consumer/offsets/test/0
+
+------> lag entre offsets Kafka et en consumer (Spark Streaming consumer):
+bin/kafka-consumer-offset-checker.sh --zookeeper localhost:2181 --topic test --group spark-streaming-consumer
+
+
+----------------------------------------------------Spark Streaming----------------------------------------------------
+Deux approaches pour integrer Kafka à Spark:
+         ---> Receiver-based approach
+         ---> Direct approach  <------ avantageux
+
+Caractéristiques:
+- Parallelism and throughput:
+ The number of partitions in RDD is defined by the number of partitions in a Kafka topic. These RDD partitions read messages from
+Kafka topic partitions in parallel. In short, Spark Streaming creates RDD partition equal to the number of Kafka partitions available to consume data in parallel
+which increases throughput.
+
+- No write-ahead log: 
+ Direct approach does not use write-ahead log to avoid data loss. Write-ahead log was causing extra storage and possibility of leading to
+duplicate data processing in few cases. Direct approach, instead, reads data directly from Kafka and commits the offset of processed messages to checkpoint.
+In case of failure, Spark knows where to start.
+
+- No Zookeeper: 
+ By default, direct approach does not use Zookeeper for committing offset consumed by Spark. Spark uses a checkpoint mechanism to deal with data loss and to start 
+execution from the last execution point in case of failure. However, Zookeeper based offset commit can be done using Curator Client.
+
+- Exactly one processing: 
+ Direct approach provides opportunity to achieve exactly one processing, which means that no data is processed twice and no data is lost.
+This is done using checkpoint maintained by Spark Streaming application which tells Spark Streaming application about where to start in case of failure.
+
+------------------------------------------------------------Kafka Connect----------------------------------------------------------------------------------
+Exemple Kafka Connect & Kafka Schema registry & sqlite database -------> page 164 Building Data DStream Application with Kafka
+ 
+
+
+
+
+
