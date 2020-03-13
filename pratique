@@ -43,9 +43,10 @@ d'échec.Cependant, la validation de décalage basée sur Zookeeper peut être e
  Apache Curator est un client Java de Apache Zookeeper , le service de coordination populaire pour les applications distribuées.
  
 - Exactly one processing: 
- Direct approach provides opportunity to achieve exactly one processing, which means that no data is processed twice and no data is lost.
-This is done using checkpoint maintained by Spark Streaming application which tells Spark Streaming application about where to start in case of failure.
-
+L'approche directe offre la possibilité de réaliser exactement un traitement, ce qui signifie qu'aucune donnée n'est traitée 
+deux fois et aucune donnée n'est perdue.Pour ce faire, utilisez le point de contrôle géré par l'application Spark Streaming qui 
+indique à l'application Spark Streaming où commencer en cas d'échec.
+ 
 ------------------------------------------------------------Kafka Connect----------------------------------------------------------------------------------
 Exemple Kafka Connect & Kafka Schema registry & sqlite database -------> page 164 Building Data DStream Application with Kafka
  
