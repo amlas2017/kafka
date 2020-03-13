@@ -26,19 +26,22 @@ Deux approaches pour integrer Kafka à Spark:
 
 Caractéristiques:
 - Parallelism and throughput:
- The number of partitions in RDD is defined by the number of partitions in a Kafka topic. These RDD partitions read messages from
-Kafka topic partitions in parallel. In short, Spark Streaming creates RDD partition equal to the number of Kafka partitions available to consume data in parallel
-which increases throughput.
-
+ Le nombre de partitions dans RDD est défini par le nombre de partitions dans un topic Kafka. Ces partitions RDD lisent les 
+messages des partitions du topic Kafka en parallèle. En bref, Spark Streaming crée une partition RDD égale au nombre de partitions
+Kafka disponibles pour consommer des données en parallèle, ce qui augmente le débit.
+ 
 - No write-ahead log: 
- Direct approach does not use write-ahead log to avoid data loss. Write-ahead log was causing extra storage and possibility of leading to
-duplicate data processing in few cases. Direct approach, instead, reads data directly from Kafka and commits the offset of processed messages to checkpoint.
-In case of failure, Spark knows where to start.
+L'approche directe n'utilise pas de log d'écriture anticipée pour éviter la perte de données. Le log d'écriture anticipée 
+entraînait un stockage supplémentaire et la possibilité de conduire à un traitement des données en double dans quelques cas. 
+L'approche directe, à la place, lit les données directement à partir de Kafka et valide le décalage des messages traités au point
+de contrôle. En cas d'échec, Spark sait par où commencer.
 
 - No Zookeeper: 
- By default, direct approach does not use Zookeeper for committing offset consumed by Spark. Spark uses a checkpoint mechanism to deal with data loss and to start 
-execution from the last execution point in case of failure. However, Zookeeper based offset commit can be done using Curator Client.
-
+Par défaut, l'approche directe n'utilise pas Zookeeper pour valider l'Offeset consommé par Spark.Spark utilise un mécanisme de 
+point de contrôle pour gérer la perte de données et pour démarrer l'exécution à partir du dernier point d'exécution en cas 
+d'échec.Cependant, la validation de décalage basée sur Zookeeper peut être effectuée à l'aide de Curator Client.
+ Apache Curator est un client Java de Apache Zookeeper , le service de coordination populaire pour les applications distribuées.
+ 
 - Exactly one processing: 
  Direct approach provides opportunity to achieve exactly one processing, which means that no data is processed twice and no data is lost.
 This is done using checkpoint maintained by Spark Streaming application which tells Spark Streaming application about where to start in case of failure.
