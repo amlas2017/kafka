@@ -2,6 +2,10 @@ https://data-flair.training/blogs/kafka-tutorials-home/
 
 // Liste de brokers: --->     echo dump | nc localhost 2181 | grep brokers
 
+// Afficher plus d'éléments sur le consumer (key, value, offset...) dans la console:
+$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --property print.key=true 
+   --property print.value=true --from-beginning
+
 // Supprimer un topic   ---->  https://sparkbyexamples.com/kafka/kafka-delete-topic/
 
 // Numéro du dernier offset:
