@@ -21,13 +21,10 @@ public class SimpleConsumer {
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");
-        props.put("key.deserializer",
-                "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("value.deserializer",
-                "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
-        KafkaConsumer<String, String> consumer = new KafkaConsumer
-                <String, String>(props);
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
 
         // Kafka Consumer va souscrire a la liste de topics ici
         consumer.subscribe(Arrays.asList(topicName));
@@ -41,8 +38,8 @@ public class SimpleConsumer {
             for (ConsumerRecord<String, String> record : records)
 
                 // Afficher l'offset, clef et valeur des enregistrements du consommateur
-                System.out.printf("offset = %d, key = %s, value = %s\n",
-                        record.offset(), record.key(), record.value());
+                System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());  
+                // on peut récupérer plus d'éléments comme record.partition...
         }
     }
 }
