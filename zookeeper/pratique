@@ -1,4 +1,11 @@
-// Installer jdk  ------>   https://www.java.com/en/
+// Télécharger java/jdk  ------>   https://www.java.com/en/
+
+// path , an optional Zookeeper path to use as a chroot environment for the Kafka cluster. If it is omitted, the root path is used.
+Il est généralement considéré comme une bonne pratique d'utiliser un chemin chroot pour le cluster Kafka.Cela permet à l'ensemble 
+Zookeeper d'être partagé avec d'autres applications, y compris d'autres clusters Kafka, sans conflit.
+Il est également préférable de spécifier plusieurs serveurs Zookeeper (qui font tous partie du même ensemble) dans cette configuration.
+Cela permet au broker Kafka de se connecter à un autre membre de l'ensemble Zookeeper en cas de défaillance du serveur.
+
 // Liste et status de noeux zookeeper:
 for i in 2 3 4; do
    echo "10.30.3.$i is a "$(echo status | nc 10.30.3.$i 2181 | grep ^Mode | awk '{print $2}')
