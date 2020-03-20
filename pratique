@@ -53,7 +53,10 @@ indique à l'application Spark Streaming où commencer en cas d'échec.
  
 ------------------------------------------------------------Kafka Connect----------------------------------------------------------------------------------
 Exemple Kafka Connect & Kafka Schema registry & sqlite database -------> page 164 Building Data DStream Application with Kafka.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+// Modifier/Augmenter le nombre de partitions d'un topic:
+      # kafka-topics.sh --zookeeper zoo1.example.com:2181/kafka-cluster  --alter --topic my-topic --partitions 16
 
 // Réduire le nombre de partitions:
 Il n'est pas possible de réduire le nombre de partitions pour un topic.La raison pour laquelle cela n'est pas pris en charge est 
