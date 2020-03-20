@@ -1,3 +1,4 @@
+// Installer jdk  ------>   https://www.java.com/en/
 // Liste et status de noeux zookeeper:
 for i in 2 3 4; do
    echo "10.30.3.$i is a "$(echo status | nc 10.30.3.$i 2181 | grep ^Mode | awk '{print $2}')
