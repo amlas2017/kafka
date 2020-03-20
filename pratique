@@ -52,7 +52,16 @@ deux fois et aucune donnée n'est perdue.Pour ce faire, utilisez le point de con
 indique à l'application Spark Streaming où commencer en cas d'échec.
  
 ------------------------------------------------------------Kafka Connect----------------------------------------------------------------------------------
-Exemple Kafka Connect & Kafka Schema registry & sqlite database -------> page 164 Building Data DStream Application with Kafka
+Exemple Kafka Connect & Kafka Schema registry & sqlite database -------> page 164 Building Data DStream Application with Kafka.
+
+
+// Réduire le nombre de partitions:
+Il n'est pas possible de réduire le nombre de partitions pour un topic.La raison pour laquelle cela n'est pas pris en charge est 
+que la suppression d'une partition d'un topic entraînerait également la suppression d'une partie des données de ce topic, ce qui 
+serait incohérent du point de vue du client.
+De plus, il serait difficile d'essayer de redistribuer les données vers les partitions restantes et d'entraîner des messages hors
+service.
+-----> Si vous devez réduire le nombre de partitions, vous devrez supprimer le topic et le recréer.
  
 
 
