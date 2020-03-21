@@ -21,15 +21,17 @@ sudo setenforce 0
 sudo sed -i --follow-symlinks 's/^SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux
 
 echo "Installing Apache Zookeeper............"
-sudo  wget http://miroir.univ-lorraine.fr/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz && sudo tar -xvf zookeeper-3.4.14.tar.gz && \
+   sudo  wget http://miroir.univ-lorraine.fr/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz &&  \
+   sudo tar -xvf zookeeper-3.4.14.tar.gz && \
    sudo mv zookeeper-3.4.14 ./zookeeper  &&  \
    sudo chown -R vagrant:vagrant zookeeper    &&   \
    sudo mv zookeeper /opt
    sudo mv /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg
 
 echo "Installing Apache kafka........"
-sudo wget  http://mirror.ibcp.fr/pub/apache/kafka/2.4.0/kafka_2.11-2.4.0.tgz  && sudo tar -xvf kafka_2.11-2.4.0.tgz &&  \
-   sudo mv kafka_2.11-2.4.0 ./kafka
+   sudo wget  http://mirror.ibcp.fr/pub/apache/kafka/2.4.0/kafka_2.11-2.4.0.tgz  && \
+   sudo tar -xvf kafka_2.11-2.4.0.tgz  &&  \
+   sudo mv kafka_2.11-2.4.0 ./kafka   &&  \ 
    sudo chown -R vagrant:vagrant kafka
    sudo mv kafka /opt
 echo 'export PATH=$PATH:/opt/zookeeper' >> ~/.bashrc
