@@ -1,0 +1,9 @@
+
+
+
+1. Installez le module SSL Apache (ou installez un package Apache qui l’a intégré).
+2. Créez une clé publique / privée.
+3. Créez une demande de signature de certificat (Certificate Signing Request CSR).
+4. Faites signer la CSR par trusted CA(une autorité de certification de confiance) pour créer un certificat.
+5. Installez le certificat et les fichiers de clés dans votre configuration Apache.
+6. Configurez Apache pour utiliser le certificat.
