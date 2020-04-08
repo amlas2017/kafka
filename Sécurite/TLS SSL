@@ -7,6 +7,6 @@ SSL pour un server web  avec l'outil openssl:
 5. Installez le certificat et les fichiers de clés dans votre configuration Apache.
 6. Configurez Apache pour utiliser le certificat.
 
-SSL pour un broker kafka avec l'outil keytool:
+SSL pour un broker kafka avec les outils keytool et openssl:
 
 $ keytool -keystore server.keystore.jks -alias localhost -validity 356 -genkey
