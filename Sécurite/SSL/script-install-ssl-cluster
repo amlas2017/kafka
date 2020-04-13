@@ -1,3 +1,4 @@
+# source ---->  https://github.com/confluentinc/cp-docker-images/blob/5.2.1-post/examples/kafka-cluster-ssl/secrets/create-certs.sh
 #!/bin/bash
 
 set -o nounset \
