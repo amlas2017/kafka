@@ -10,7 +10,7 @@ SSL pour un server web  avec l'outil openssl:
 SSL pour un broker kafka avec les outils keytool et openssl:
 
 $ keytool -keystore server.keystore.jks -alias localhost -validity 356 -genkey
-
+Il faut que le CN correspond exactement au nom de domaine FQDN du serveur.
 
 //  "Keystore" est un répo / fichier qui stocke des clés privés-publics et des certificats. 
 //  "Truststore" est un répo / fichier qui stocke uniquement des certificats.
