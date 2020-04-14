@@ -1,2 +1,3 @@
 https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-centos-7
 
+------->  Les fichiers log kafka sont stockés dans   .../kafka/logs/server.log
