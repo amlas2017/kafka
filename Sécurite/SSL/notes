@@ -1,3 +1,26 @@
+// Script des etapes de mise en place d'une authentification SSL
+// source ------------> http://kafka.apache.org/090/documentation.html#security_overview
+
+#!/bin/bash
+        #Step 1
+        keytool -keystore server.keystore.jks -alias localhost -validity 365 -genkey
+        #Step 2
+        openssl req -new -x509 -keyout ca-key -out ca-cert -days 365
+        keytool -keystore server.truststore.jks -alias CARoot -import -file ca-cert
+        keytool -keystore client.truststore.jks -alias CARoot -import -file ca-cert
+        #Step 3
+        keytool -keystore server.keystore.jks -alias localhost -certreq -file cert-file
+        openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:20192019
+        keytool -keystore server.keystore.jks -alias CARoot -import -file ca-cert
+        keytool -keystore server.keystore.jks -alias localhost -import -file cert-signed
+                                                                                         
+//  "Keystore" est un répo / fichier qui stocke des clés privés-publics et des certificats. 
+//  "Truststore" est un répo / fichier qui stocke uniquement des certificats.
+
+
+
+
+
 SSL pour un server web  avec l'outil openssl:
 
 1. Installez le module SSL Apache (ou installez un package Apache qui l’a intégré).
@@ -9,8 +32,7 @@ SSL pour un server web  avec l'outil openssl:
 
 SSL pour un broker kafka avec les outils keytool et openssl:
 
-$ keytool -keystore server.keystore.jks -alias localhost -validity 356 -genkey
+
 Il faut que le CN correspond exactement au nom de domaine FQDN du serveur.
 
-//  "Keystore" est un répo / fichier qui stocke des clés privés-publics et des certificats. 
-//  "Truststore" est un répo / fichier qui stocke uniquement des certificats.
+
