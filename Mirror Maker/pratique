@@ -1,1 +1,8 @@
 // ---->     https://medium.com/real-time-streaming/apache-kafka-mirror-maker-1400efeca94d
+
+// MirrorMaker (réplicateur inter-cluster intégré d'Apache Kafka est appelé MirrorMaker) est un outil permettant de mettre en miroir des données entre deux datacenters. A la base, il s'agit d'une collection
+de consumers (appelés flux dans la documentation MirrorMaker, pour des raisons historiques), qui font tous partie du même groupe
+de consumers et lisent les données de l'ensemble des topics que vous avez choisi de répliquer.
+Chaque processus MirrorMaker a un seul producer. Le flux de travail est assez simple: MirrorMaker exécute un thread pour chaque consumer. Chaque consumer consomme des événements 
+des topics et des partitions qui lui ont été affectées sur le cluster source et utilise le producer partagé pour envoyer ces événements 
+au cluster cible.
