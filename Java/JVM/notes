@@ -1,0 +1,4 @@
+ // Modification de Java Heap de la JVM:
+   dans /bin/kafka-server-start.sh    -------------->  export KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
+ 
+ 
