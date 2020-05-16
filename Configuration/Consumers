@@ -1,3 +1,11 @@
+// Rappel sur groupes de consumers:
+- Si toutes les instances de consommateur font partie du même groupe de consommateurs, cela fonctionne exactement comme une file 
+  d’attente traditionnelle équilibrant la charge sur les consommateurs.
+- Si toutes les instances de consommateurs sont de groupes de consommateurs différents, cela fonctionne comme publish-subscribe 
+  et tous les messages sont diffusés à tous les consommateurs.
+
+
+
 //  ---->  https://blog.univalence.io/kafka-et-les-groupes-de-consommateurs/
 // Infos sur les groupes consumers:
    
