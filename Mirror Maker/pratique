@@ -7,6 +7,12 @@ Chaque processus MirrorMaker a un seul producer. Le flux de travail est assez si
 des topics et des partitions qui lui ont été affectées sur le cluster source et utilise le producer partagé pour envoyer ces événements 
 au cluster cible.
 
+// MirrorMaker permet de créer un “miroir” d’un cluster Kafka entier. Sur papier, cela semble être un bon outil pour répliquer un
+cluster, néanmoins il possède plusieurs défauts. Pour en citer quelques un : les topics miroirs sont créés avec une configuration
+par défaut, les ACLs (Access Control Lists) ne sont pas répliqués, les messages sont re-partitionnés avec la “DefaultPartitionner”
+, etc.
+---> MirrorMaker 2.0 se base sur Kafka Connect afin de répliquer le mieux possible un cluster Kafka.
+
 // TP kafka/MirrorMaker avec Docker ---->  https://github.com/framiere/mirror-maker-docker-example
 
 version: '2'
