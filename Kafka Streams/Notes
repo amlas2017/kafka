@@ -1,0 +1,10 @@
+----> Kafka Streams est une API streaming transactionnelle. Elle permet de traiter les données unitairement, une à la fois directement depuis les topics Kafka.  
+
+----> Kafka Streams comble parfaitement les limites d’un consumer classique. Là où un consumer ne sait que lire la donnée  sans pouvoir y effectuer des traitements 
+réutilisables (par exemple : récupérer les données d’un topic, tester la validité des données, et publier les valides dans un autre topics, et les non-valides dans un 
+autre), avec Kafka Streams, on peut appliquer des règles de validation à chaque donnée, et même effectuer des opérations complexes tels que les agrégations, 
+les jointures, ou encore la gestion des cas complexes. 
+
+----> Kafka Streams comble également les limites des « consumers décisionnels » tels que Spark Streaming ou Apache Flink. Là où ceux-ci sont obligés d’effectuer des 
+traitements de données sur des micro-batch, avec Kafka Streams on effectue des traitements unitaires par défaut, et on a le choix entre ce mode de traitement et le 
+traitement groupé. 
