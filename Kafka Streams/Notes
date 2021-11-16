@@ -13,3 +13,5 @@ traitement groupé.
 API très légère qui repose sur un cluster Kafka. Kafka Streams s’y connecte simplement comme client. 
 C’est important de noter que même si Kafka Streams traite directement les topics sur Kafka, il ne tourne pas sur le cluster Kafka. Il tourne sur une machine standalone 
 différente et le cluster Kafka le voit juste comme un Consumer qui s’est abonné à l’un de ses topics. 
+
+---->  TP: https://www.youtube.com/watch?v=fACxTiCR-Ro
