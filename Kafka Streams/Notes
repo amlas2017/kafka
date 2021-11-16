@@ -8,3 +8,8 @@ les jointures, ou encore la gestion des cas complexes.
 ----> Kafka Streams comble également les limites des « consumers décisionnels » tels que Spark Streaming ou Apache Flink. Là où ceux-ci sont obligés d’effectuer des 
 traitements de données sur des micro-batch, avec Kafka Streams on effectue des traitements unitaires par défaut, et on a le choix entre ce mode de traitement et le 
 traitement groupé. 
+
+----> Là où la mise en œuvre de Storm demande la mise en place d’une architecture lambda complexe, l’utilisation de Kafka Streams nécessite juste un PC, car elle est une 
+API très légère qui repose sur un cluster Kafka. Kafka Streams s’y connecte simplement comme client. 
+C’est important de noter que même si Kafka Streams traite directement les topics sur Kafka, il ne tourne pas sur le cluster Kafka. Il tourne sur une machine standalone 
+différente et le cluster Kafka le voit juste comme un Consumer qui s’est abonné à l’un de ses topics. 
