@@ -1,16 +1,15 @@
 // ---->     https://medium.com/real-time-streaming/apache-kafka-mirror-maker-1400efeca94d
 
-// MirrorMaker (réplicateur inter-cluster intégré d'Apache Kafka est appelé MirrorMaker) est un outil permettant de mettre en miroir des données entre deux datacenters. A la base, il s'agit d'une collection
-de consumers (appelés flux dans la documentation MirrorMaker, pour des raisons historiques), qui font tous partie du même groupe
-de consumers et lisent les données de l'ensemble des topics que vous avez choisi de répliquer.
-Chaque processus MirrorMaker a un seul producer. Le flux de travail est assez simple: MirrorMaker exécute un thread pour chaque consumer. Chaque consumer consomme des événements 
-des topics et des partitions qui lui ont été affectées sur le cluster source et utilise le producer partagé pour envoyer ces événements 
-au cluster cible.
+// MirrorMaker (réplicateur inter-cluster intégré de Kafka est appelé MirrorMaker) est un outil permettant de mettre en miroir des données entre deux datacenters. 
+A la base, il s'agit d'une collection de consumers (appelés flux dans la documentation MirrorMaker, pour des raisons historiques), qui font tous partie du même 
+groupe de consumers et lisent les données de l'ensemble des topics que vous avez choisi de répliquer.
+Chaque processus MirrorMaker a un seul producer. Le flux de travail est assez simple: MirrorMaker exécute un thread pour chaque consumer. 
+Chaque consumer consomme des événements des topics et des partitions qui lui ont été affectées sur le cluster source et utilise le producer partagé pour envoyer ces 
+événements au cluster cible.
 
-// MirrorMaker permet de créer un “miroir” d’un cluster Kafka entier. Sur papier, cela semble être un bon outil pour répliquer un
-cluster, néanmoins il possède plusieurs défauts. Pour en citer quelques un : les topics miroirs sont créés avec une configuration
-par défaut, les ACLs (Access Control Lists) ne sont pas répliqués, les messages sont re-partitionnés avec la “DefaultPartitionner”
-, etc.
+// MirrorMaker permet de créer un “miroir” d’un cluster Kafka entier. Sur papier, cela semble être un bon outil pour répliquer un cluster, néanmoins il possède 
+plusieurs défauts. Pour en citer quelques un : les topics miroirs sont créés avec une configuration par défaut, les ACLs (Access Control Lists) ne sont pas répliqués,
+les messages sont re-partitionnés avec la “DefaultPartitionner” , etc.
 ---> MirrorMaker 2.0 se base sur Kafka Connect afin de répliquer le mieux possible un cluster Kafka.
 
 // TP kafka/MirrorMaker avec Docker ---->  https://github.com/framiere/mirror-maker-docker-example
