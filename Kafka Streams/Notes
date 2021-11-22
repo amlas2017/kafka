@@ -17,6 +17,20 @@ différente et le cluster Kafka le voit juste comme un Consumer qui s’est abon
 ---->  TP: https://www.youtube.com/watch?v=fACxTiCR-Ro
 
 
+
+>>>>>>>>>>>>>>>>>>>>>> Features of Kafka Streams  <<<<<<<<<<<<<<<<<<<<<<<<<<
+
+-    The best features are elasticity, high scalability, and fault-tolerance.
+-    Deploy to containers, VMs, bare metal, cloud.
+-    For small, medium, & large use cases, it is equally viable.
+-    It is fully in integration with Kafka security.
+-    Write standard Java applications.
+-    Exactly-once processing semantics.
+-    There is no need of separate processing cluster.
+-    It is developed on Mac, Linux, Windows.
+
+
+
 /////////////////********************************* Implementing Kafka Streams  *****************************************///////////////////////////
 
 Basically, built with Kafka Streams, a stream processing application looks like:
