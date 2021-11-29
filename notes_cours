@@ -1,1 +1,6 @@
-https://blog.univalence.io/kafka-synthese/
+--- https://blog.univalence.io/kafka-synthese/
+
+--- Consumer group is a collection of consumer instances. In a group, each partition will be consumed by exactly one consumer instance but one consumer instance can 
+    consume from more than one partition.
+
+
