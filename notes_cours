@@ -2,5 +2,8 @@
 
 --- Consumer group is a collection of consumer instances. In a group, each partition will be consumed by exactly one consumer instance but one consumer instance can 
     consume from more than one partition.
+    
+--- L'un des avantages de faire partie de Consumer Group est que lorsqu'un consumer échoue ou quitte le groupe, les partitions qui doivent être lues sont réassignées. 
+Un consumer existant prendra la place de lire une partition qui était lue par le consumer qui a quitté le groupe.
 
 
