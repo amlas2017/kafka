@@ -1,0 +1,5 @@
+--->  Les principales classes Java pour Kafka:
+  - Properties  ===>  Properties props = new Properties();
+  - KafkaConsumer ===>  KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
+  - ConsumerRecords<String, String> 
+  - 
