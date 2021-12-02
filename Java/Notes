@@ -2,4 +2,12 @@
   - Properties  ===>  Properties props = new Properties();
   - KafkaConsumer ===>  KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
   - ConsumerRecords<String, String> 
+  
+  
+-->  ConsumerRecords<String,String> records = consumer.poll(Duration.ofSeconds(30));
+La méthode poll() du consumer Kafka récupère les records en ordre séquentiel à partir d'un Topic/partitions spécifié(e). 
+Cette méthode poll() est la façon dont les clients Kafka lisent les données de Kafka. 
+Lors de l'appel de la méthode poll(), les consommateurs fournissent un argument timeout. Il s'agit de la durée maximale d'attente pour le traitement des enregistrements
+avant le retour.
+
   - 
