@@ -12,5 +12,7 @@ La méthode poll() du consumer Kafka récupère les records en ordre séquentiel
 Cette méthode poll() est la façon dont les clients Kafka lisent les données de Kafka. 
 Lors de l'appel de la méthode poll(), les consommateurs fournissent un argument timeout. Il s'agit de la durée maximale d'attente pour le traitement des enregistrements
 avant le retour.
+La méthode poll() vérifie essentiellement qu'un seul thread accède au consommateur, puis entre dans une boucle do...while où la condition while est que l'argument temps
+fourni ne soit pas dépassé.
 
   - 
