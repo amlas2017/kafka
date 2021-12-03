@@ -18,5 +18,11 @@ fourni ne soit pas dépassé.
 --> Manually Assign Partition To A Consumer:
         TopicPartition topicPartition = new TopicPartition(TOPIC_NAME, 1);
         consumer.assign(Collections.singleton(topicPartition));
-
+ 
+ Autrement,     
+String topic = "MY_TOPIC";
+TopicPartition partition0 = new TopicPartition(topic, 0);
+TopicPartition partition1 = new TopicPartition(topic, 1);
+consumer.assign(Arrays.asList(partition0, partition1));
+    
 Note that KafkaConsumer#assign() and KafkaConsumer#subscribe() cannot be used together (   consumer.subscribe(Arrays.asList(topicName)  );
