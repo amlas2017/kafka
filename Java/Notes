@@ -15,4 +15,8 @@ avant le retour.
 La méthode poll() vérifie essentiellement qu'un seul thread accède au consommateur, puis entre dans une boucle do...while où la condition while est que l'argument temps
 fourni ne soit pas dépassé.
 
-  - 
+--> Manually Assign Partition To A Consumer:
+        TopicPartition topicPartition = new TopicPartition(TOPIC_NAME, 1);
+        consumer.assign(Collections.singleton(topicPartition));
+
+Note that KafkaConsumer#assign() and KafkaConsumer#subscribe() cannot be used together (   consumer.subscribe(Arrays.asList(topicName)  );
