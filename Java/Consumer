@@ -34,7 +34,15 @@ public class SimpleConsumer {
         int i = 0;
 
         while (true) {
-            ConsumerRecords<String, String> records = consumer.poll(100);
+            ConsumerRecords<String, String> records = consumer.poll(100);  // cette ligne est la plus importante dans Kafka Consumer
+            
+/* De la même manière que les requins doivent continuer à bouger ou ils meurent, les consommateurs doivent continuer à sonder Kafka ou ils seront considérés comme 
+morts et les partitions qu'ils consomment seront remises à un autre consommateur du groupe pour continuer à consommer.
+Le paramètre que nous passons, poll(), est un intervalle de temporisation et contrôle la durée pendant laquelle poll() bloquera si les données ne sont pas 
+disponibles dans le tampon consommateur. S'il est défini sur 0, poll() retournera immédiatement ; sinon, il attendra le nombre de millisecondes spécifié pour 
+que les données arrivent du courtier.*/                   
+                  
+         
             for (ConsumerRecord<String, String> record : records)
 
                 // Afficher l'offset, clef et valeur des enregistrements du consommateur
