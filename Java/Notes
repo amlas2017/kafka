@@ -5,7 +5,8 @@
   - KafkaProducer<String, String>
   - ProducerRecord  ----->  ProducerRecord producerRecord = new ProducerRecord<>(topic,key,value);
   - 
-  
+
+---> A KafkaAdmin bean is responsible for creating new topics in our broker. With Spring Boot, a KafkaAdmin bean is automatically registered.
   
 -->  ConsumerRecords<String,String> records = consumer.poll(Duration.ofSeconds(30));
 La méthode poll() du consumer Kafka récupère les records en ordre séquentiel à partir d'un Topic/partitions spécifié(e). 
