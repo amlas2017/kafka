@@ -51,3 +51,14 @@ que les données arrivent du courtier.*/
         }
     }
 }
+
+*******************************************************************************************************************************************************
+ ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(5));
+          for (ConsumerRecord<String, String> record : records) {
+              System.out.printf("consumed: key = %s, value = %s, partition id= %s, offset = %s%n",
+                      record.key(), record.value(), record.partition(), record.offset());
+          }
+          if (records.isEmpty()) {
+              System.out.println("-- terminating consumer --");   // <------------------        pour savoir que le consumer s'est arrété.
+              break;
+          }
