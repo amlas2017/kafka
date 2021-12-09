@@ -1,5 +1,14 @@
 https://data-flair.training/blogs/kafka-tutorials-home/
 
+
+                        ***************************************************************************************************
+                                                            Listing Kafka Consumers
+                        ***************************************************************************************************
+-     https://www.baeldung.com/ops/listing-kafka-consumers
+
+
+=======================================================================================================================================================================
+
 // Liste de brokers: --->     echo dump | nc localhost 2181 | grep brokers
 
 // Afficher plus d'éléments sur le consumer (key, value, offset...) dans la console:
