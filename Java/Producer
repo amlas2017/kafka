@@ -17,6 +17,19 @@ public class DemoProducer {
         producerProps.put("batch.size", 20000);
         producerProps.put("linger.ms", 1);
         producerProps.put("buffer.memory", 24568545);
+        
+        /* *******************************************************************************************************************************
+        properties.setProperty(ProducerConfig.ACKS_CONFIG, "all"); // strongest producing guarantee
+        properties.setProperty(ProducerConfig.RETRIES_CONFIG, "3");
+        properties.setProperty(ProducerConfig.LINGER_MS_CONFIG, "1");
+        
+        // leverage idempotent producer from Kafka 0.11 !
+        properties.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true"); // ensure we don't push duplicates
+         ******************************************************************************************************************************** */      
+        
+        
+        
+        
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(producerProps);
 
         for (int i = 0; i < 250; i++) {
