@@ -8,7 +8,7 @@ import java.util.concurrent.Future;
 public class DemoProducer {
     public static void main(String[] args) {
 
-        Properties producerProps = new Properties();
+        Properties producerProps = new Properties();  ///  The Properties class extends Hashtable and thus does not define a guaranteed sort order
         producerProps.put("bootstrap.servers", "poste3:9092");
         producerProps.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         producerProps.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
