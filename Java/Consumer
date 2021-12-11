@@ -62,3 +62,23 @@ que les données arrivent du courtier.*/
               System.out.println("-- terminating consumer --");   // <------------------        pour savoir que le consumer s'est arrété.
               break;
           }
+======================================================================================================================================================================
+
+---> What is partition rebalance?
+Within a consumer group, Kafka changes the ownership of partition from one consumer to another at certain events.
+The process of changing partition ownership across the consumers is called a rebalance.
+Rebalance happens at following events:
+  (1) A new consumer joins a consumer group:  A partition rebalance is triggered when we add a new consumer to the group. The new consumer starts consuming messages 
+  from partitions previously consumed by another consumer.
+
+  (2) An existing consumer shuts down: A partition rebalance is triggered when a consumer shuts down or crashes. The partitions it used to consume will be consumed by 
+  one of the remaining consumers.
+
+  (3) The topic is modified:
+  A partition rebalance is also triggered when the topics the consumer group is consuming are modified. For example new partitions are added to the topic.
+
+
+
+
+
+
