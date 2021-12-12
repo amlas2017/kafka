@@ -39,3 +39,5 @@ public class DemoProducer {
         producer.close();
     }
 }
+=====================================================================================================================================================================
+How to create a Multithreaded Producer in Java   ------->   https://www.learningjournal.guru/article/kafka/how-to-create-a-multithreaded-kafka-producer-in-java/
