@@ -76,6 +76,33 @@ Rebalance happens at following events:
 
   (3) The topic is modified:
   A partition rebalance is also triggered when the topics the consumer group is consuming are modified. For example new partitions are added to the topic.
+=======================================================================================================================================================================
+---> Commit Current Offset:  commitSync() & commitAsync()
+
+ - commitSync() will commit the latest offset returned by poll(). Calling it will block your thread until it either succeeds or fails.
+                         while (true) {
+                            ConsumerRecords<String, String> records = consumer.poll(100);
+                            for (ConsumerRecord<String, String> record : records) {
+                                System.out.printf("offset = %d, key = %s, value = %s", record.offset(), record.key(), record.value());
+                                consumer.commitSync();
+                            }
+                        }
+ 
+ - commitAsync() is a non-blocking method. Calling it will not block your thread. Instead, it will continue processing the following instructions, no matter whether it
+   will succeed or fail eventually.
+                         while (true) {
+                            ConsumerRecords<String, String> records = consumer.poll(100);
+                            for (ConsumerRecord<String, String> record : records) {
+                                System.out.printf("offset = %d, key = %s, value = %s", record.offset(), record.key(), record.value());
+                                consumer.commitAsync(callback);
+                            }
+                        }
+                        
+ 
+ 
+ 
+ 
+ 
 
 
 
