@@ -59,9 +59,9 @@ public class BasicProducerExample {
 To run the producer example, use the following command:
 
 $ java com.hortonworks.example.kafka.producer.BasicProducerExample
-
-Producer Example for an SSL-Enabled Cluster
-
+=======================================================================================================================================================================
+                                                      Producer Example for an SSL-Enabled Cluster
+=======================================================================================================================================================================
 The following example adds three important configuration settings for SSL encryption and three for SSL authentication. The two sets of configuration settings are prefaced by comments.
 
 package com.hortonworks.example.kafka.producer;
@@ -130,9 +130,9 @@ public class BasicProducerExample {
 To run the producer example, use the following command:
 
 $ java com.hortonworks.example.kafka.producer.BasicProducerExample
-
-Basic Consumer Example
-
+=======================================================================================================================================================================
+                                                                   Basic Consumer Example
+=======================================================================================================================================================================
 package com.hortonworks.example.kafka.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -184,12 +184,11 @@ public class BasicConsumerExample {
    }
 
 }
-To run the consumer example, use the following command:
 
-# java com.hortonworks.example.kafka.consumer.BasicConsumerExample
 
-Consumer Example for an SSL-Enabled Cluster
-
+=======================================================================================================================================================================
+                                                            Consumer Example for an SSL-Enabled Cluster
+=======================================================================================================================================================================
 The following example adds three important configuration settings for SSL encryption and three for SSL authentication. The two sets of configuration settings are prefaced by comments.
 
 package com.hortonworks.example.kafka.consumer;
