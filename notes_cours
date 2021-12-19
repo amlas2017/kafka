@@ -1,3 +1,5 @@
+--- Problème de la commande "jps" :  ----->   sudo yum install glibc.i686
+
 --- https://blog.univalence.io/kafka-synthese/
 
 --- Consumer group is a collection of consumer instances. In a group, each partition will be consumed by exactly one consumer instance but one consumer instance can 
