@@ -1,3 +1,4 @@
+#########  https://akageun.github.io/2020/05/01/docker-compose-kafka-cluster-manager.html #######################
 ############################# Renseigner l'ip dans KAFKA_ADVERTISED_LISTENERS
 ############################# On peut utiliser cette commande:   ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'
 
