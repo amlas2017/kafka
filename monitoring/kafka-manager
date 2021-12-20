@@ -1,1 +1,89 @@
-??? à vérifier/tester  ---->  http://chennaihug.org/knowledgebase/yahoo-kafka-manager/
+############################# Renseigner l'ip dans KAFKA_ADVERTISED_LISTENERS
+############################# On peut utiliser cette commande:   ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'
+
+version: '3.6'
+
+services:
+    zookeeper:
+        container_name: zookeeper
+        image: wurstmeister/zookeeper
+        volumes:
+            - "./zookeeper/data:/data"
+            - "./zookeeper/logs:/datalog"
+        ports:
+            - "2181:2181"
+
+    kafka1:
+        container_name: kafka1
+        image: wurstmeister/kafka
+        restart: on-failure
+        ports:
+            - "9095:9092"
+        volumes:
+            - ./kafka1:/var/run/docker.sock
+        environment:
+            KAFKA_BROKER_ID: 1
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+            JMX_PORT: 9093
+            KAFKA_JMX_OPTS: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=192.168.13.169 -Dcom.sun.management.jmxremote.rmi.port=9093
+            KAFKA_ADVERTISED_HOST_NAME: 192.168.13.169
+            KAFKA_ADVERTISED_PORT: 9092
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.43.3:9095
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+        depends_on:
+            - zookeeper
+#    kafka2:
+#        container_name: kafka2
+#        image: wurstmeister/kafka
+#        restart: on-failure
+#        ports:
+#            - "9096:9092"
+#        volumes:
+#            - ./kafka2:/var/run/docker.sock
+#        environment:
+#            KAFKA_BROKER_ID: 2
+#            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+#            JMX_PORT: 9093
+#            KAFKA_JMX_OPTS: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=192.168.13.169 -Dcom.sun.management.jmxremote.rmi.port=9093
+#            KAFKA_ADVERTISED_HOST_NAME: 192.168.13.169
+#            KAFKA_ADVERTISED_PORT: 9092
+#            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.13.169:9096
+#            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+#        depends_on:
+#            - zookeeper
+#    kafka3:
+#        container_name: kafka3
+#        image: wurstmeister/kafka
+#        restart: on-failure
+#        ports:
+#            - "9097:9092"
+#        volumes:
+#            - ./kafka3:/var/run/docker.sock
+#        environment:
+#            KAFKA_BROKER_ID: 3
+#            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+#            JMX_PORT: 9093
+#            KAFKA_JMX_OPTS: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=192.168.13.169 -Dcom.sun.management.jmxremote.rmi.port=9093
+#            KAFKA_ADVERTISED_HOST_NAME: 192.168.13.169
+#            KAFKA_ADVERTISED_PORT: 9092
+#            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.13.169:9097
+#            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+#        depends_on:
+#            - zookeeper
+
+    # https://github.com/hleb-albau/kafka-manager-docker
+    kafka-manager:
+        container_name: kafka-manager
+        image: hlebalbau/kafka-manager:2.0.0.2
+        restart: on-failure
+        depends_on:
+            - kafka1
+#            - kafka2
+#            - kafka3
+            - zookeeper
+        environment:
+            ZK_HOSTS: zookeeper:2181
+            APPLICATION_SECRET: "random-secret"
+            KM_ARGS: -Djava.net.preferIPv4Stack=true
+        ports:
+            - "9000:9000"       
