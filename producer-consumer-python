@@ -1,6 +1,6 @@
 $ pip install kafka-python
 
-// producer
+// producer        <-------------------------- A revoir   !!!!!!!!!!!!
 from kafka import KafkaProducer
 bootstrap_servers = ['localhost:9092']
 topicName = 'Hello-Kafka'
