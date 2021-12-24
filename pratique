@@ -1,4 +1,11 @@
-https://data-flair.training/blogs/kafka-tutorials-home/
+--- Use the shuf command to generate random data and feed it to the kafka producer ----> /usr/bin/shuf -i 1-100000 -n 50000000 \
+                                                                                          | tee -a /tmp/kafka-random-data \
+                                                                                          | bin/kafka-console-producer.sh \
+                                                                                          --bootstrap-server=0.0.0.0:9092 \
+                                                                                          --topic purge-scenario
+
+
+--- https://data-flair.training/blogs/kafka-tutorials-home/
 
 
                         ***************************************************************************************************
