@@ -1,3 +1,5 @@
+// Maitriser le parametrage des producers kafka    ------------------------>   https://blog.zenika.com/2020/11/04/maitriser-le-parametrage-des-producers-kafka/
+
 // Batch Linger
 La configuration linger.ms définit le temps minimum que le producer va attendre avant d’envoyer un batch. Cette propriété laisse donc le temps aux messages de 
 s’accumuler côté producer avant envoi, pour limiter le nombre d’appels réseau vers le broker et gagner en performance globale. Tant que la durée définie dans 
@@ -5,9 +7,6 @@ linger.ms ne s’est pas écoulée, le producer n’enverra pas le batch, à con
 Par défaut, cette propriété est configurée à 0 (on n’attend pas que les batchs se remplissent avant envoi). Pour connaître la valeur à configurer, des tests de 
 performance doivent être effectués avec la volumétrie et la fréquence cible des données qui vont transiter par ce topic. Ces tests, en combinaison avec le batch.size, 
 permettront d’assurer un taux de traitement maximum. 
-
-
-
 
 
 // Même si nous configurons les brokers dans la configuration la plus fiable possible, le système dans son ensemble peut toujours 
