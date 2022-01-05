@@ -42,6 +42,9 @@ Le paramètre que nous passons, poll(), est un intervalle de temporisation et co
 disponibles dans le tampon consommateur. S'il est défini sur 0, poll() retournera immédiatement ; sinon, il attendra le nombre de millisecondes spécifié pour 
 que les données arrivent du broker. */                   
                   
+                  /*  max.partition.fetch.bytes: This property controls the maximum number of bytes the server will return per partition. 
+                  The default is 1 MB, which means that when KafkaConsumer.poll() returns ConsumerRecords, the record object will use at most max.partition.fetch.bytes per partition 
+                  assigned to the consumer. So if a topic has 20 partitions, and we have 5 consumers, each consumer will need to have 4 MB of memory available for Consumer. */
          
             for (ConsumerRecord<String, String> record : records)
 
