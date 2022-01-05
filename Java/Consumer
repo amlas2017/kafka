@@ -40,7 +40,7 @@ public class SimpleConsumer {
 morts et les partitions qu'ils consomment seront remises à un autre consommateur du groupe pour continuer à consommer.
 Le paramètre que nous passons, poll(), est un intervalle de temporisation et contrôle la durée pendant laquelle poll() bloquera si les données ne sont pas 
 disponibles dans le tampon consommateur. S'il est défini sur 0, poll() retournera immédiatement ; sinon, il attendra le nombre de millisecondes spécifié pour 
-que les données arrivent du courtier.*/                   
+que les données arrivent du broker. */                   
                   
          
             for (ConsumerRecord<String, String> record : records)
