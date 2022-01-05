@@ -4,7 +4,7 @@
                                                                                           --bootstrap-server=0.0.0.0:9092 \
                                                                                           --topic purge-scenario
 
- ou      echo "/usr/bin/shuf -i 1-100000 -n 50000000 | tee -a /tmp/kafka-random-data " | kafkacat -P -b localhost:9092 -t topic-test
+ ou       /usr/bin/shuf -i 1-100000 -n 50000000  | tee -a /tmp/kafka-random-data  | kafkacat -P -b localhost:9092 -t topic-test
  
 
 --- https://data-flair.training/blogs/kafka-tutorials-home/
