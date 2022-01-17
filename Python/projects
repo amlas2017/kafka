@@ -1,1 +1,26 @@
 ---  Producuer en python , json , Spark streaming + kafka  ------->   https://www.youtube.com/watch?v=19CZM4aM-8U
+
+--- Producer & Consumer:  $ pip install kafka-python
+
+            // producer        <-------------------------- A revoir   !!!!!!!!!!!!
+            from kafka import KafkaProducer
+            bootstrap_servers = ['localhost:9092']
+            topicName = 'Hello-Kafka'
+            producer = KafkaProducer(bootstrap_servers = bootstrap_servers)
+            producer = KafkaProducer()
+            ack = producer.send(topicName, b'Hello World!!!!!!!!')            <-----------------------   producer.send('mytopic', bytes(msg, encoding='utf8'))
+            metadata = ack.get()
+            print(metadata.topic)
+            print(metadata.partition)
+
+            // consumer
+            from kafka import KafkaConsumer
+            consumer = KafkaConsumer('Hello-Kafka',
+                                     group_id='my-group',
+                                     bootstrap_servers=['localhost:9092'])
+            for message in consumer:
+                # message value and key are raw bytes -- decode if necessary!
+                # e.g., for unicode: `message.value.decode('utf-8')`
+                print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
+                                                      message.offset, message.key,
+                                                      message.value))
