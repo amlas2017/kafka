@@ -1,3 +1,6 @@
 --- Liste de connectors   ------>   curl -s localhost:8083/connector-plugins | jq '.[].class'
 
 --- Dans la création du connector SOURCE, on renseigne un seul TOPIC, en revanche dans la configuration SINK, on peut définir plusieurs Topics.
+
+--- To delete a connector   ------------>     curl -X DELETE http://localhost:8083/connectors/connector_name
+
