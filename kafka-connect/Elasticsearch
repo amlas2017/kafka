@@ -2,4 +2,6 @@
    Kafka Connect Elasticsearch Connector in Action    ------>   https://www.confluent.io/blog/kafka-elasticsearch-connector-tutorial/
    
    
+--->  docker-compose ---->  https://github.com/confluentinc/demo-scene/blob/master/kafka-to-elasticsearch/docker-compose.yml
+   
    
