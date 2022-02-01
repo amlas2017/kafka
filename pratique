@@ -1,3 +1,7 @@
+--- Les messages d'un topic Kafka sont lus plusieurs fois, contrairement aux systemes de messageries classiques(JMS, ActiveMQ,...), et ne sont pas supprimés après 
+    consommation(rétention).
+    
+
 --- Idempotence: How to Handle Duplicate Messages and Message Ordering in Kafka   
                       -----> https://betterprogramming.pub/how-to-handle-duplicate-messages-and-message-ordering-in-kafka-82e2fef82025
                       
