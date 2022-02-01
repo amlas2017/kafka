@@ -15,7 +15,7 @@ public class DemoProducer {
         producerProps.put("acks", "all");
         producerProps.put("retries", 1);
         producerProps.put("batch.size", 20000);
-        producerProps.put("linger.ms", 1);
+        producerProps.put("linger.ms", 1);    //  linger.ms définit le temps minimum que le producer va attendre avant d’envoyer un batch
         producerProps.put("buffer.memory", 24568545);
         
         /* *******************************************************************************************************************************
