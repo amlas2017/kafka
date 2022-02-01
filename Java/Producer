@@ -15,7 +15,10 @@ public class DemoProducer {
         producerProps.put("acks", "all");
         producerProps.put("retries", 1);
         producerProps.put("batch.size", 20000);
-        producerProps.put("linger.ms", 1);    //  linger.ms définit le temps minimum que le producer va attendre avant d’envoyer un batch
+        producerProps.put("linger.ms", 1);    //  linger.ms définit le temps minimum que le producer va attendre avant d’envoyer un batch. Cette propriété laisse donc le
+                                              //  temps aux messages de s’accumuler côté producer avant envoi, pour limiter le nombre d’appels réseau vers le broker et 
+                                              //  gagner en performance globale. Tant que la durée définie dans linger.ms ne s’est pas écoulée, le producer n’enverra pas 
+                                              //  le batch, à condition que le batch ne dépasse pas la taille maximale autorisée (voir batch.size ci-dessous).
         producerProps.put("buffer.memory", 24568545);
         
         /* *******************************************************************************************************************************
