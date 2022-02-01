@@ -1,7 +1,11 @@
 ---> Stratégies de partitionnement en Kafka: https://www.youtube.com/watch?v=rDfkuBufXm8&list=PLlFvk4v0wHXCpAcGZZnHs3C9RE5MvZM-9&index=6
+    1) Round-roubin
+    2) Clé de hash
+    3) Statique
+    4)Personnalisée     -----> Interface Partionner    
 
 
-
+/************************************************************************************************************************************************************/
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
