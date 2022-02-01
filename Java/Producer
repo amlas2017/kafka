@@ -26,7 +26,10 @@ public class DemoProducer {
         // leverage idempotent producer from Kafka 0.11 !
         properties.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true"); // ensure we don't push duplicates
          ******************************************************************************************************************************** */      
-        
+/*      Le partitioner par défaut gère deux cas: 
+    --->  Si la clé du message est null, alors le sticky partitionner est utilisé.
+    --->  Sinon, on répartit les messages par partition avec la formule suivante: hash(clé) % (modulo) nombre de partitions.                   
+   ************************************************************************************************************************************** */
         
         
         
