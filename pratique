@@ -1,3 +1,5 @@
+--- Consumer poll messages ONLY from Leader partitions. It gets messages in batches (not by a single message).
+
 --- Les messages d'un topic Kafka sont lus plusieurs fois, contrairement aux systemes de messageries classiques(JMS, ActiveMQ,...), et ne sont pas supprimés après 
     consommation(rétention).
     
