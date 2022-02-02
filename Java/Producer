@@ -3,9 +3,14 @@
     2) Clé de hash
     3) Statique
     4)Personnalisée     -----> Interface Partionner    
-
-
 /************************************************************************************************************************************************************/
+
+---> Diferents constructors for ProducerRecord
+-- ProducerRecord(String topic, Integer partition, K key, V value) ----->   Creates a record to be sent to a specified topic and partition
+-- ProducerRecord(java.lang.String topic, V value)     ----->   Create a record with no key
+
+/**************************************************************************************************************************************************************/
+
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
