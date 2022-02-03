@@ -6,6 +6,13 @@
 
 --- Idempotence: How to Handle Duplicate Messages and Message Ordering in Kafka   
                       -----> https://betterprogramming.pub/how-to-handle-duplicate-messages-and-message-ordering-in-kafka-82e2fef82025
+====================================================================================================================================================================                      
+                      
+--- Gestion d'idempotence du consumer:    https://medium.com/@shesh.soft/kafka-idempotent-producer-and-consumer-25c52402ceb9
+
+      1) Set EnableAutoCommit = false and commit the offset once the application finishes its processing using synchronous API Commit.
+      2) EnableAutoCommit = true and commit the offset using Asynchronous API StoreOffset.
+      3) EnableAutoCommit = false and store the offset in an atomic way along with the processed message using atomic-transaction in the application persistence layer.
                       
 =====================================================================================================================================================================
 
