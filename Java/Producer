@@ -1,3 +1,11 @@
+---> Les producers n’envoient pas les messages un à un vers kafka, mais envoient des batchs de messages vers les différents brokers leaders de chaque partition. 
+     Quand le producer effectue un send, le message n’est donc pas immédiatement transmis sur le réseau mais accumulé dans un buffer interne. 
+     Les batchs sont envoyés dès que l’une des deux conditions suivantes se remplit : 
+           *** soit le timer démarré à la création du batch expire  ---->   linger.ms est le temps minimum que le producer va attendre avant d’envoyer un batch.
+           *** soit le batch dépasse une certaine taille            ---->   batch.size paramètre la taille maximum d’un batch avant envoi.
+
+
+
 ---> Stratégies de partitionnement en Kafka: https://www.youtube.com/watch?v=rDfkuBufXm8&list=PLlFvk4v0wHXCpAcGZZnHs3C9RE5MvZM-9&index=6
     1) Round-roubin
     2) Clé de hash
