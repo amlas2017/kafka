@@ -1,3 +1,6 @@
+---> Lag: A consumer is lagging when it’s unable to read from a partition as fast as messages are produced to it.
+
+
 // 2 methodes pour supprimer les vieux logs(messages):
 i) suppresstion classique de logs selon age (log.roll.ms= ,log.retention.ms= ) ou espace/bytes (log.segment.bytes= )
 --> Pour gérer la taille croissante des journaux, Kafka les roule en segments. Le calendrier de roulement des journaux est basé 
