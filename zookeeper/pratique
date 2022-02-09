@@ -1,6 +1,8 @@
 // What are types of nodes in ZooKeeper?
            == Types of Znodes == There are three types of znodes or nodes: Persistent, Ephemeral and Sequential.
-   Ephemeral nodes mean znodes which exist as long as the session which created the znode is active and then znode is deleted when the session ends           
+   Ephemeral nodes mean znodes which exist as long as the session which created the znode is active and then znode is deleted when the session ends.
+   
+// When a broker starts, it will have a unique id that will create an ephemeral node on Zookeeper.   
 
 // Télécharger java/jdk  ------>   https://www.java.com/en/
 
