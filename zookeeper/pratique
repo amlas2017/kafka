@@ -1,3 +1,6 @@
+// What are types of nodes in ZooKeeper?
+           == Types of Znodes == There are three types of znodes or nodes: Persistent, Ephemeral and Sequential.
+
 // Télécharger java/jdk  ------>   https://www.java.com/en/
 
 // path , an optional Zookeeper path to use as a chroot environment for the Kafka cluster. If it is omitted, the root path is used.
