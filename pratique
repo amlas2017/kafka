@@ -1,4 +1,4 @@
---- Gestion de débit(Throughput):   ---->   https://dattell.com/data-architecture-blog/kafka-optimization-how-many-partitions-are-needed/
+--- Gestion de débit(Throughput):   ----->   https://dattell.com/data-architecture-blog/kafka-optimization-how-many-partitions-are-needed/
 
                                      # Partitions = Desired Throughput / Partition Speed  
              
