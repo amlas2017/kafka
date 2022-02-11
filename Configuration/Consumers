@@ -1,3 +1,5 @@
+// three partition allocation strategies: Kafka Range, RoundRobin, and Sticky    ---->   https://www.programmersought.com/article/94204007318/
+
 // Rappel sur groupes de consumers:
 - Si toutes les instances de consommateur font partie du même groupe de consommateurs, cela fonctionne exactement comme une file 
   d’attente traditionnelle équilibrant la charge sur les consommateurs.
