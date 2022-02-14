@@ -1,3 +1,6 @@
+--- There are exactly only two problems in distributed systemes: 1) Guaranteed order of messages  2) Exactly-once delivry
+
+
 --- Gestion de débit(Throughput):   ----->   https://dattell.com/data-architecture-blog/kafka-optimization-how-many-partitions-are-needed/
 
                                      # Partitions = Desired Throughput / Partition Speed  
