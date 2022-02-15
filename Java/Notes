@@ -7,7 +7,9 @@
   - ConsumerRecord<String, String> 
   - KafkaProducer<String, String>
   - ProducerRecord  ----->  ProducerRecord producerRecord = new ProducerRecord<>(topic,key,value);
-  - 
+  - TopicPartition partition0 = new TopicPartition(topic, 0);
+      TopicPartition partition1 = new TopicPartition(topic, 1);
+      consumer.assign(Arrays.asList(partition0, partition1));
 
 ---> A KafkaAdmin bean is responsible for creating new topics in our broker. With Spring Boot, a KafkaAdmin bean is automatically registered.
   
