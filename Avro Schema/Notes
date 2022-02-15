@@ -1,1 +1,16 @@
+---> Avro est un framework développé dans le cadre du projet Apache Hadoop. Il s’agit d’un format de stockage basé sur des lignes qui est largement utilisé comme 
+     processus de sérialisation. AVRO stocke son schéma au format JSON, ce qui le rend facile à lire et à interpréter par n’importe quel programme. 
+     Les données elles-mêmes sont stockées au format binaire en les rendant compactes et efficaces. Une caractéristique clé d’AVRO est liée au fait qu’il gère 
+     facilement l’évolution des schémas. Il joint des métadonnées à leurs données dans chaque enregistrement.
+
+    Avantages
+        Avro est un système de sérialisation de données.
+        Il est divisible (AVRO a un marqueur de synchronisation pour séparer le bloc) et compressible.
+        Avro est un bon format de fichier pour l’échange de données. Il dispose d’un stockage de données qui est très compact, rapide et efficace pour l’analyse.
+        Il prend fortement en charge l’évolution du schéma (à différents moments et indépendamment).
+        Il supporte le batch et et particulière approprié au streaming.
+        Les schémas sont définis en JSON, facile à lire et à interpréter.
+        Les données sont toujours accompagnées d’un schéma qui permet un traitement complet des données.
+
+
 --->    https://codingharbour.com/apache-kafka/guide-to-apache-avro-and-kafka/
