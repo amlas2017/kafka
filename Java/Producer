@@ -9,13 +9,13 @@
 ---> Stratégies de partitionnement en Kafka: https://www.youtube.com/watch?v=rDfkuBufXm8&list=PLlFvk4v0wHXCpAcGZZnHs3C9RE5MvZM-9&index=6
     1) Round-roubin
     2) Clé de hash
-    3) Statique
-    4)Personnalisée     -----> Interface Partionner    
+    3) Statique (Le producer choisit la partition)
+    4) Personnalisée     -----> Interface Partionner    
 /************************************************************************************************************************************************************/
 
 ---> Diferents constructors for ProducerRecord
 -- ProducerRecord(String topic, Integer partition, K key, V value) ----->   Creates a record to be sent to a specified topic and partition
--- ProducerRecord(java.lang.String topic, V value)     ----->   Create a record with no key
+-- ProducerRecord(String topic, V value)     ----->   Create a record with no key
 
 /**************************************************************************************************************************************************************/
 
