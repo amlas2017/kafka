@@ -1,3 +1,6 @@
+--- Kafka Connect tourne sur son propre cluster, distinct du cluster de Kafka. Aussi, l’API REST n’est utilisable que lors de l’exécution en mode distribuée de Kafka 
+     Connect. Elle n’est pas disponible en mode Standalone.  
+
 --- Liste de connectors   ------>   curl -s localhost:8083/connector-plugins | jq '.[].class'
 
 --- Dans la création du connector SOURCE, on renseigne un seul TOPIC, en revanche dans la configuration SINK, on peut définir plusieurs Topics.
