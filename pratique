@@ -8,8 +8,9 @@
 Example: if your desired throughput is 5 TB per day. That figure comes out to about 58 MB/s. Using the estimate of 10 MB/s per partition, this example implementation
 would require 6 partitions.
 
-bin/kafka-topics.sh –zookeeper localhost:2181 –create –topic my-topic –partitions 6 –replication-factor 3 –config max.message.bytes=64000 –config flush.messages=1
 
+kafka-topics --bootstrap-server localhost:9092 --create --topic my-topic --partitions 3 --replication-factor 1 --config max.message.bytes=64000 
+             --config flush.messages=1
 
 
 --- Consumer poll messages ONLY from Leader partitions. It gets messages in batches (not by a single message).
