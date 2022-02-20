@@ -1,3 +1,5 @@
+---  Vérifier si zookeeper fonctionne    ----->    docker-compose logs zookeeper | grep start
+
 --- We can verify that the Zookeeper server is listening on port 2181, while the Kafka brokers are listening on ports 29092 and 39092, respectively:
 
           $ ports=(2181 29092 39092)
