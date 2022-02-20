@@ -1,3 +1,15 @@
+--- We can verify that the Zookeeper server is listening on port 2181, while the Kafka brokers are listening on ports 29092 and 39092, respectively:
+
+          $ ports=(2181 29092 39092)
+          $ for port in $ports
+          do
+          nc -z localhost $port
+          done
+          Connection to localhost port 2181 [tcp/eforward] succeeded!
+          Connection to localhost port 29092 [tcp/*] succeeded!
+          Connection to localhost port 39092 [tcp/*] succeeded!
+
+
 --- There are exactly only two problems in distributed systemes: 1) Guaranteed order of messages  2) Exactly-once delivry
 
 
