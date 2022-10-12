@@ -17,7 +17,7 @@
 //  "Keystore" est un répo / fichier qui stocke des clés privés-publics et des certificats. 
 //  "Truststore" est un répo / fichier qui stocke uniquement des certificats.
 
-// Un broker Kafka peur écouter sur plusieurs ports ------> listeners=PLAINTEXT://host.name:port,SSL://host.name:port
+// Un broker Kafka peut écouter sur plusieurs ports ------> listeners=PLAINTEXT://host.name:port,SSL://host.name:port
 
 
 
